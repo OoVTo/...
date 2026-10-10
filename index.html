@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI-901: Microsoft Azure AI Fundamentals — Complete Reviewer and Practice Exam</title>
+<style>
+:root{--ink:#10243b;--sub:#4a5b6f;--bg:#f3f6fa;--card:#fff;--line:#d3dbe5;--az:#0f62a8;--az2:#e3eef9;--ok:#19794a;--okbg:#e4f4ea;--bad:#b3261e;--badbg:#fbe9e7;--warn:#8a5a00;--warnbg:#fff4d9;--r:4px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 "Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif}
+h1,h2,h3,h4{font-family:"Palatino Linotype","Book Antiqua",Georgia,serif;line-height:1.25;color:var(--ink)}
+main{max-width:980px;margin:0 auto;padding:28px 22px 80px;transition:margin .25s}
+@media(min-width:1180px){body.open main{margin-right:310px;margin-left:24px}}
+header.top{background:var(--ink);color:#fff;padding:40px 22px 34px;border-bottom:6px solid var(--az)}
+header.top .in{max-width:980px;margin:0 auto}
+header.top h1{color:#fff;font-size:2.1rem;margin:0 0 6px}
+header.top p{margin:0;color:#c5d4e6;max-width:70ch}
+@media(min-width:1180px){body.open header.top .in{margin-right:310px;margin-left:24px}}
+section.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px 28px;margin:0 0 22px}
+section.card>h2{margin:0 0 4px;font-size:1.6rem;border-bottom:2px solid var(--az);padding-bottom:8px}
+h3{font-size:1.2rem;margin:26px 0 6px;color:var(--az)}
+h4{font-size:1.03rem;margin:18px 0 4px}
+p{margin:8px 0}
+ul,ol{margin:6px 0 10px 22px;padding:0}li{margin:3px 0}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:.94rem}
+.tw{overflow-x:auto}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--az2);color:var(--ink)}
+tr:nth-child(even) td{background:#fafcfe}
+.tip,.trap,.def{border-left:4px solid var(--az);background:var(--az2);padding:10px 14px;margin:14px 0;border-radius:0 var(--r) var(--r) 0}
+.trap{border-color:#c98a00;background:var(--warnbg)}
+.def{border-color:var(--ok);background:var(--okbg)}
+.tip b:first-child,.trap b:first-child,.def b:first-child{display:inline-block;margin-right:6px}
+code{background:#eaf0f7;padding:1px 5px;border-radius:3px;font-size:.9em}
+.meta{color:var(--sub);font-size:.95rem}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.mini{border:1px solid var(--line);padding:12px 14px;border-radius:var(--r);background:#fcfdff}
+.mini h4{margin-top:0}
+/* side menu */
+#tg{position:fixed;top:14px;right:14px;z-index:60;background:var(--az);color:#fff;border:0;border-radius:var(--r);padding:10px 14px;font:600 .95rem inherit;font-family:inherit;cursor:pointer;box-shadow:0 2px 8px #0003}
+#tg:focus-visible,button:focus-visible,.opt:focus-visible,.zone:focus-visible,.chip:focus-visible,a:focus-visible{outline:3px solid #f2a900;outline-offset:2px}
+#side{position:fixed;top:0;right:0;bottom:0;width:290px;max-width:88vw;background:#fff;border-left:1px solid var(--line);z-index:55;transform:translateX(100%);transition:transform .25s;padding:64px 16px 20px;overflow-y:auto;box-shadow:-4px 0 18px #0002}
+body.open #side{transform:none}
+#side h5{margin:16px 0 6px;font:700 .95rem Georgia,serif;color:var(--sub)}
+#side a,#side button.nv{display:block;width:100%;text-align:left;padding:8px 10px;margin:2px 0;color:var(--ink);text-decoration:none;border:0;background:none;border-radius:var(--r);font:inherit;font-size:.93rem;cursor:pointer}
+#side a:hover,#side button.nv:hover{background:var(--az2)}
+#side .exam{background:var(--ink);color:#fff;font-weight:600;text-align:center;margin-top:14px;padding:12px}
+#side .exam:hover{background:var(--az)}
+/* exam */
+#exam{display:none;max-width:980px;margin:0 auto;padding:26px 22px 80px}
+body.ex #reviewer,body.ex header.top{display:none}
+body.ex #exam{display:block}
+@media(min-width:1180px){body.open #exam{margin-right:310px;margin-left:24px}}
+.box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px 26px;margin-bottom:18px}
+.btn{background:var(--az);color:#fff;border:0;border-radius:var(--r);padding:10px 20px;font:600 .96rem inherit;font-family:inherit;cursor:pointer}
+.btn:hover{background:#0a4d86}.btn.alt{background:#fff;color:var(--ink);border:1px solid var(--line)}.btn.alt:hover{background:var(--az2)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+input.pw{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:var(--r);width:min(300px,100%)}
+.err{color:var(--bad);font-weight:600;min-height:1.4em}
+.bar{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--ink);color:#fff;padding:12px 18px;border-radius:var(--r);margin-bottom:14px;position:sticky;top:0;z-index:20}
+.prog{height:6px;background:#dbe3ec;border-radius:3px;margin-bottom:16px;overflow:hidden}.prog i{display:block;height:100%;background:var(--az)}
+.qt{font-size:1.1rem;margin:4px 0 14px}
+.note{color:var(--sub);font-size:.92rem;margin:0 0 10px}
+.opt{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;margin:7px 0;cursor:pointer;background:#fff}
+.opt:hover{background:#f4f8fc}.opt.sel{border-color:var(--az);background:var(--az2)}
+.opt .mk{flex:none;width:20px;height:20px;border:2px solid #7d8da0;border-radius:50%;margin-top:2px;display:grid;place-items:center;font-size:.8rem;line-height:1}
+.opt.ms .mk{border-radius:3px}.opt.sel .mk{background:var(--az);border-color:var(--az);color:#fff}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}.opt.no{border-color:var(--bad);background:var(--badbg)}
+.yn td:nth-child(n+2){text-align:center;width:80px}
+.yn input{width:18px;height:18px}
+.dd{display:grid;gap:8px}
+.drow{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:stretch}
+@media(max-width:620px){.drow{grid-template-columns:1fr}}
+.lab{border:1px solid var(--line);padding:10px 12px;border-radius:var(--r);background:#f8fafc}
+.zone{min-height:44px;border:2px dashed #8a9bb0;border-radius:var(--r);padding:8px 10px;display:flex;align-items:center;color:#7a8a9d;cursor:pointer;font-size:.93rem}
+.zone.has{border-style:solid;border-color:var(--az);background:var(--az2);color:var(--ink)}
+.zone.over{background:#dcecfb}
+.pool{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 4px;padding:12px;border:1px solid var(--line);border-radius:var(--r);background:#f8fafc;min-height:54px}
+.chip{background:#fff;border:1px solid var(--az);color:var(--ink);border-radius:var(--r);padding:7px 12px;cursor:grab;font-size:.93rem;user-select:none}
+.chip.pick{background:var(--az);color:#fff}
+.nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.pal{display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:6px;margin-top:10px}
+.pal button{padding:7px 0;border:1px solid var(--line);background:#fff;border-radius:var(--r);cursor:pointer;font:inherit;font-size:.88rem}
+.pal button.done{background:var(--az2);border-color:var(--az)}.pal button.flag{border-color:#c98a00;box-shadow:inset 0 -4px #f2a900}.pal button.cur{background:var(--ink);color:#fff}
+.score{font:700 3rem Georgia,serif}.pass{color:var(--ok)}.fail{color:var(--bad)}
+.rv{border:1px solid var(--line);border-left:6px solid var(--line);padding:14px 16px;border-radius:var(--r);margin:12px 0;background:#fff}
+.rv.c{border-left-color:var(--ok)}.rv.w{border-left-color:var(--bad)}.rv.p{border-left-color:#c98a00}
+.expl{background:var(--az2);padding:8px 12px;border-radius:var(--r);margin-top:8px;font-size:.94rem}
+.dm{display:grid;gap:8px}.dm div{display:grid;grid-template-columns:150px 1fr 54px;gap:8px;align-items:center;font-size:.92rem}
+.dm i{display:block;height:10px;background:var(--az);border-radius:5px}.dm span{background:#dbe3ec;border-radius:5px;display:block}
+@media print{#side,#tg{display:none}main{margin:0!important}header.top{background:#fff;color:#000}header.top h1,header.top p{color:#000}section.card{break-inside:avoid-page}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<button id="tg" aria-expanded="false" aria-controls="side">Menu</button>
+<aside id="side" aria-label="Reviewer menu">
+  <h5>Reviewer</h5>
+  <a href="#overview" data-v="r">Exam overview</a>
+  <h5>Objective 1: Fundamentals</h5>
+  <a href="#s11" data-v="r">1.1 Responsible AI</a>
+  <a href="#s12" data-v="r">1.2 Model components and configurations</a>
+  <a href="#s13" data-v="r">1.3 AI workloads</a>
+  <h5>Objective 2: Implementation in Foundry</h5>
+  <a href="#s21" data-v="r">2.1 Generative AI apps and agents</a>
+  <a href="#s22" data-v="r">2.2 Text and speech</a>
+  <a href="#s23" data-v="r">2.3 Computer vision and image generation</a>
+  <a href="#s24" data-v="r">2.4 Information extraction</a>
+  <h5>Quick study</h5>
+  <a href="#sheet" data-v="r">Service-to-scenario cheat sheet</a>
+  <a href="#traps" data-v="r">Common exam traps</a>
+  <a href="#gloss" data-v="r">Glossary</a>
+  <button class="nv exam" id="goExam">Practice certification exam</button>
+</aside>
+
+<header class="top"><div class="in">
+  <h1>AI-901: Microsoft Azure AI Fundamentals</h1>
+  <p>Complete reviewer covering all six skill areas, with a practice exam in the certification format. Open the menu on the right to move between topics or start the exam.</p>
+</div></header>
+
+<main id="reviewer">
+
+<section class="card" id="overview">
+  <h2>Exam overview</h2>
+  <p>AI-901 validates foundational knowledge of AI concepts and of the Microsoft Foundry tools used to build AI solutions. It is a fundamentals-level exam: no coding is required, but you must recognize which service, model type, setting or principle fits a described scenario.</p>
+  <div class="tw"><table>
+    <tr><th>Objective</th><th>Skill area</th></tr>
+    <tr><td rowspan="3">1. Describe AI concepts</td><td>1.1 Describe principles of responsible AI</td></tr>
+    <tr><td>1.2 Identify AI model components and configurations</td></tr>
+    <tr><td>1.3 Identify AI workloads</td></tr>
+    <tr><td rowspan="4">2. Implement AI solutions by using Foundry</td><td>2.1 Implement generative AI apps and agents by using Foundry</td></tr>
+    <tr><td>2.2 Implement AI solutions for text and speech by using Foundry</td></tr>
+    <tr><td>2.3 Implement AI solutions with computer vision and image generation by using Foundry</td></tr>
+    <tr><td>2.4 Implement AI solutions for information extraction by using Foundry</td></tr>
+  </table></div>
+  <div class="tip"><b>Format.</b> Expect multiple choice, select-multiple, yes/no statement sets, and drag-and-drop matching. Microsoft scores on a 1–1000 scale and a score of 700 is passing. Question counts, time and domain weightings change, so confirm them on the official AI-901 study guide on Microsoft Learn before test day.</div>
+  <div class="trap"><b>Naming note.</b> Microsoft renames services often. Azure AI Studio became Azure AI Foundry and is now Microsoft Foundry; "Azure AI Services" is now part of Foundry Tools; Cognitive Services is the older name. Learn the capability, because the exam may use either the current or the older name.</div>
+</section>
+
+<section class="card" id="s11">
+  <h2>1.1 Describe principles of responsible AI</h2>
+  <h3>The six Microsoft responsible AI principles</h3>
+  <div class="tw"><table>
+    <tr><th>Principle</th><th>Meaning</th><th>Typical example</th></tr>
+    <tr><td><b>Fairness</b></td><td>AI systems treat all people equitably and do not affect similarly situated groups differently.</td><td>A loan model gives comparable approval rates to equally qualified applicants of any gender or ethnicity. Assess and mitigate bias in data and model.</td></tr>
+    <tr><td><b>Reliability and safety</b></td><td>Systems perform consistently under expected and unexpected conditions and fail safely.</td><td>Rigorous testing and monitoring of an autonomous vehicle or a medical triage bot; safe behavior with unusual inputs.</td></tr>
+    <tr><td><b>Privacy and security</b></td><td>Protect personal and confidential data; resist attacks; follow consent and data regulations.</td><td>Encrypt data at rest and in transit, limit access with RBAC, minimize data collected, honor consent, redact PII.</td></tr>
+    <tr><td><b>Inclusiveness</b></td><td>Empower and engage everyone, including people with disabilities and diverse backgrounds.</td><td>Captions, screen-reader support, speech interfaces, multi-language support, diverse user testing.</td></tr>
+    <tr><td><b>Transparency</b></td><td>People can understand what a system does, how it reached a result, and its limits.</td><td>Telling users they are talking to AI, publishing transparency notes, model cards, explainability, disclosing confidence and limitations.</td></tr>
+    <tr><td><b>Accountability</b></td><td>People are answerable for AI systems; governance and human oversight exist.</td><td>Defined owners, review boards, audit trails, human-in-the-loop for high-impact decisions, compliance with regulation.</td></tr>
+  </table></div>
+  <div class="tip"><b>Memory aid.</b> The first four (Fairness, Reliability and safety, Privacy and security, Inclusiveness) are the <i>ideals</i>; Transparency and Accountability are the <i>foundations</i> that support them.</div>
+  <h3>Responsible generative AI</h3>
+  <p>Generative models add new risks. Microsoft's approach is a four-stage cycle:</p>
+  <ol>
+    <li><b>Identify</b> potential harms (for example by red teaming and use-case analysis).</li>
+    <li><b>Measure</b> how often harmful or ungrounded output occurs with test sets and evaluations.</li>
+    <li><b>Mitigate</b> at multiple layers (below).</li>
+    <li><b>Operate</b> the solution responsibly: deployment readiness review, monitoring, incident response, user feedback, ongoing updates.</li>
+  </ol>
+  <h4>Mitigation layers</h4>
+  <div class="tw"><table>
+    <tr><th>Layer</th><th>What it covers</th></tr>
+    <tr><td>Model</td><td>Choose an appropriate model; fine-tune; use models with built-in safety training.</td></tr>
+    <tr><td>Safety system</td><td>Platform-level controls: content filters, abuse monitoring, Azure AI Content Safety, Prompt Shields, groundedness detection, protected-material detection.</td></tr>
+    <tr><td>System message and grounding</td><td>Metaprompt defining behavior and boundaries; grounding responses in trusted data (RAG).</td></tr>
+    <tr><td>User experience</td><td>Disclosures that content is AI-generated, limits on input length, human review, feedback buttons, citations.</td></tr>
+  </table></div>
+  <h3>Harms and tools to know</h3>
+  <ul>
+    <li><b>Harmful content categories</b> in Azure AI Content Safety: hate and fairness, sexual, violence and self-harm. Each is rated by severity (safe, low, medium, high), and thresholds are configurable.</li>
+    <li><b>Hallucination / ungrounded content</b>: fluent output not supported by source data. Mitigate with grounding (RAG), clear system messages, citations and groundedness detection.</li>
+    <li><b>Jailbreak and prompt injection</b>: user (direct) or document (indirect) text that tries to override instructions. <b>Prompt Shields</b> help detect both.</li>
+    <li><b>Protected material detection</b>: flags output matching known copyrighted text or code.</li>
+    <li><b>Content filters</b> in Foundry are configured and attached to model deployments and apply to prompts and completions.</li>
+    <li><b>Transparency Notes</b> describe a service's intended uses, capabilities, limitations and best practices. <b>Limited Access</b> gates sensitive capabilities (for example some face and custom voice features).</li>
+    <li><b>Responsible AI dashboard</b> (Azure Machine Learning) supports fairness, error and interpretability analysis for traditional ML models.</li>
+    <li>No filter is perfect: layered defenses plus human oversight are required.</li>
+  </ul>
+</section>
+
+<section class="card" id="s12">
+  <h2>1.2 Identify AI model components and configurations</h2>
+  <h3>Core concepts</h3>
+  <ul>
+    <li><b>Artificial intelligence</b>: software that mimics human abilities such as perception, language and decision-making. <b>Machine learning</b> learns patterns from data. <b>Deep learning</b> uses multi-layer neural networks. <b>Generative AI</b> creates new content.</li>
+    <li><b>Features</b> are the input variables (x); the <b>label</b> is the value to predict (y). <b>Training</b> fits a model to data; <b>inference</b> uses the trained model on new data.</li>
+    <li>Data is split into <b>training</b>, <b>validation</b> and <b>test</b> sets. <b>Overfitting</b> = excellent on training data, poor on new data. <b>Underfitting</b> = poor everywhere.</li>
+  </ul>
+  <h3>Machine learning types</h3>
+  <div class="tw"><table>
+    <tr><th>Type</th><th>Learning</th><th>Predicts</th><th>Example</th></tr>
+    <tr><td>Regression</td><td>Supervised</td><td>A number</td><td>House price, delivery time, sales volume</td></tr>
+    <tr><td>Classification</td><td>Supervised</td><td>A category (binary or multiclass)</td><td>Spam or not, disease class, churn yes/no</td></tr>
+    <tr><td>Time-series forecasting</td><td>Supervised</td><td>Future numeric values from time-ordered data</td><td>Next month's demand</td></tr>
+    <tr><td>Clustering</td><td>Unsupervised (no labels)</td><td>Groups of similar items</td><td>Customer segmentation</td></tr>
+    <tr><td>Anomaly detection</td><td>Often unsupervised</td><td>Unusual points or patterns</td><td>Fraud, sensor failure</td></tr>
+  </table></div>
+  <h3>Evaluation metrics</h3>
+  <div class="grid2">
+    <div class="mini"><h4>Regression</h4><ul><li><b>MAE</b>: mean absolute error</li><li><b>MSE / RMSE</b>: squared error; RMSE is in the label's units</li><li><b>R²</b>: share of variance explained (closer to 1 is better)</li></ul></div>
+    <div class="mini"><h4>Classification</h4><ul><li><b>Accuracy</b> = correct / total</li><li><b>Precision</b> = TP / (TP + FP)</li><li><b>Recall</b> = TP / (TP + FN)</li><li><b>F1</b>: balance of precision and recall</li><li><b>AUC</b>: separation across thresholds</li><li><b>Confusion matrix</b>: TP, FP, TN, FN</li></ul></div>
+  </div>
+  <div class="tip"><b>Which metric?</b> Missing a real case is costly (cancer screening): favor <b>recall</b>. False alarms are costly (flagging legitimate transactions): favor <b>precision</b>.</div>
+  <h3>Language model components</h3>
+  <ul>
+    <li><b>Tokens</b>: the chunks (words, sub-words, punctuation) a model reads and writes. Usage and cost are measured in tokens; one token is not always one word.</li>
+    <li><b>Transformer architecture</b>: uses <b>attention</b> to weigh the relevance of each token to the others; consists of encoder and/or decoder blocks. GPT-style models are decoder-based and predict the next token.</li>
+    <li><b>Embeddings</b>: numeric vectors that capture meaning; similar meaning gives nearby vectors. Used for semantic search, clustering, recommendations and RAG.</li>
+    <li><b>Context window</b>: maximum tokens for prompt plus response combined.</li>
+    <li><b>LLM vs SLM</b>: large models give broader capability; small language models are cheaper, faster, and can run on devices or at the edge.</li>
+    <li><b>Model families</b>: chat/completion (text), reasoning models (spend extra tokens thinking before answering), multimodal (text plus image, audio), embedding, image generation, speech-to-text/text-to-speech, and open-weight or partner models in the Foundry catalog.</li>
+  </ul>
+  <h3>Configuration parameters</h3>
+  <div class="tw"><table>
+    <tr><th>Setting</th><th>Effect</th></tr>
+    <tr><td>System message</td><td>Defines role, tone, rules and format; sets behavior for the whole conversation.</td></tr>
+    <tr><td>Temperature</td><td>Randomness. Low (0 to 0.3) is focused and repeatable; high is creative and varied.</td></tr>
+    <tr><td>Top P (nucleus sampling)</td><td>Samples only from tokens within a cumulative probability mass. Adjust temperature <i>or</i> top P, not both.</td></tr>
+    <tr><td>Max tokens (max completion tokens)</td><td>Caps response length; too low truncates the answer.</td></tr>
+    <tr><td>Frequency penalty</td><td>Reduces repetition of tokens in proportion to how often they have appeared.</td></tr>
+    <tr><td>Presence penalty</td><td>Encourages new topics by penalizing any token already present.</td></tr>
+    <tr><td>Stop sequences</td><td>Text that ends generation when produced.</td></tr>
+    <tr><td>Seed</td><td>Improves reproducibility of outputs (best effort).</td></tr>
+    <tr><td>Response format</td><td>Plain text, JSON, or structured output that follows a JSON schema.</td></tr>
+  </table></div>
+  <h3>Prompting, grounding and customization</h3>
+  <ul>
+    <li><b>Prompt engineering</b>: clear instructions, role, context, examples. <i>Zero-shot</i> (no examples), <i>few-shot</i> (examples in prompt), chain-of-thought style step-by-step guidance.</li>
+    <li><b>RAG</b> (retrieval-augmented generation): retrieve relevant data at query time and add it to the prompt. Fresh, citable, no retraining.</li>
+    <li><b>Fine-tuning</b>: further train a model on labeled examples to change style, format or specialist behavior. Costlier and slower; it does not reliably add new facts.</li>
+    <li>Order of effort: prompt engineering, then RAG, then fine-tuning.</li>
+  </ul>
+  <h3>Deployment and access</h3>
+  <ul>
+    <li>In Foundry you choose a model from the <b>model catalog</b> and create a <b>deployment</b> (with a deployment name). Apps call the resource <b>endpoint</b> with that deployment name.</li>
+    <li>Authenticate with an <b>API key</b> or, preferably, <b>Microsoft Entra ID</b> (keyless, managed identity) with role-based access.</li>
+    <li>Capacity is governed by quota (tokens per minute / requests per minute). Deployment types include Standard / Global Standard (pay-per-token) and Provisioned throughput (reserved capacity, predictable latency).</li>
+  </ul>
+</section>
+
+<section class="card" id="s13">
+  <h2>1.3 Identify AI workloads</h2>
+  <div class="tw"><table>
+    <tr><th>Workload</th><th>What it does</th><th>Scenarios</th><th>Services</th></tr>
+    <tr><td><b>Generative AI</b></td><td>Creates new text, code, images, audio</td><td>Copilots, summarizing, drafting, Q&amp;A over company data, image creation</td><td>Foundry Models (GPT, image models), Foundry Agent Service</td></tr>
+    <tr><td><b>Agentic AI</b></td><td>LLM plans, calls tools and acts toward a goal</td><td>Booking assistant, IT helpdesk agent, research agent</td><td>Foundry Agent Service, Microsoft Agent Framework, MCP tools</td></tr>
+    <tr><td><b>Computer vision</b></td><td>Interprets images and video</td><td>Image tagging, captions, OCR, object detection, face detection, video insights</td><td>Azure AI Vision, Face, Video Indexer</td></tr>
+    <tr><td><b>Natural language processing</b></td><td>Understands and produces human language</td><td>Sentiment, key phrases, entities, PII, translation, summarization, intent detection, Q&amp;A</td><td>Azure AI Language, Translator</td></tr>
+    <tr><td><b>Speech</b></td><td>Converts speech to text and text to speech; translates speech</td><td>Transcription, voice assistants, captions, audiobooks</td><td>Azure AI Speech</td></tr>
+    <tr><td><b>Information extraction</b></td><td>Pulls structured data from unstructured content</td><td>Invoices, receipts, forms, contracts, multimodal files</td><td>Document Intelligence, Content Understanding</td></tr>
+    <tr><td><b>Knowledge mining</b></td><td>Indexes and enriches large content stores for search</td><td>Searching millions of PDFs, images and records</td><td>Azure AI Search (with AI enrichment)</td></tr>
+    <tr><td><b>Anomaly detection</b></td><td>Finds unusual behavior</td><td>Fraud, equipment faults, spikes in telemetry</td><td>Azure Machine Learning, anomaly detection models</td></tr>
+    <tr><td><b>Forecasting / predictive ML</b></td><td>Predicts numbers or categories from historical data</td><td>Demand forecasting, churn, price prediction</td><td>Azure Machine Learning</td></tr>
+  </table></div>
+  <h3>Computer vision sub-workloads</h3>
+  <ul>
+    <li><b>Image classification</b>: one label (or multiple labels) for the whole image.</li>
+    <li><b>Object detection</b>: labels <i>and</i> bounding-box locations.</li>
+    <li><b>Semantic segmentation</b>: classifies each pixel.</li>
+    <li><b>OCR</b>: reads printed or handwritten text. <b>Image analysis</b>: captions, tags, objects, people, smart crop. <b>Face detection and analysis</b>: locates faces.</li>
+  </ul>
+  <h3>Language sub-workloads</h3>
+  <ul><li>Entity recognition, key phrase extraction, language detection, sentiment analysis, summarization, translation, conversational language understanding (intent and entities), question answering.</li></ul>
+  <div class="tip"><b>Decision shortcut.</b> Ask what the <i>input</i> is (image, audio, text, form, mixed file) and what the <i>output</i> is (a label, text, structured fields, new content). That nearly always identifies the workload.</div>
+</section>
+
+<section class="card" id="s21">
+  <h2>2.1 Implement generative AI apps and agents by using Foundry</h2>
+  <h3>Foundry building blocks</h3>
+  <ul>
+    <li><b>Microsoft Foundry portal</b>: web experience to explore the <b>model catalog</b>, deploy models, test in <b>playgrounds</b>, build agents, run evaluations and manage safety.</li>
+    <li><b>Foundry resource and project</b>: the resource holds endpoints, keys, deployments and connections; a <b>project</b> organizes work for an app (agents, files, evaluations, connected resources).</li>
+    <li><b>Model catalog</b>: models from Azure OpenAI (GPT family, reasoning, image, audio, embeddings), Microsoft, and partners/open-weight providers, with benchmarks for comparison.</li>
+    <li><b>Playgrounds</b>: chat playground (test system message, parameters, grounding data), agents playground, image and audio playgrounds. Use "View code" to export SDK samples.</li>
+    <li><b>SDKs and APIs</b>: Foundry SDK (<code>azure-ai-projects</code>), OpenAI-compatible client (Chat Completions and Responses APIs), REST. Auth with Microsoft Entra ID or key.</li>
+  </ul>
+  <h3>Build a chat app step by step</h3>
+  <ol>
+    <li>Create a Foundry project; pick and <b>deploy</b> a model (a deployment is required before calling it).</li>
+    <li>Test in the chat playground; write the <b>system message</b>; tune temperature, top P and max tokens; add few-shot examples.</li>
+    <li>Add your data for grounding (RAG).</li>
+    <li>Add content filters/safety settings; evaluate quality and safety.</li>
+    <li>Call the endpoint from code: send messages with roles <code>system</code>, <code>user</code>, <code>assistant</code> (and <code>tool</code> for tool results). Use <b>streaming</b> to show tokens as produced and keep conversation history in the message list because the model itself is stateless.</li>
+  </ol>
+  <h3>RAG (grounding on your data)</h3>
+  <ul>
+    <li>Pipeline: <b>chunk</b> documents, create <b>embeddings</b>, store in a <b>vector index</b> (typically Azure AI Search), then at query time <b>retrieve</b> top matches, <b>augment</b> the prompt, and <b>generate</b> an answer with citations.</li>
+    <li>Azure AI Search supports keyword, vector and <b>hybrid</b> search plus <b>semantic ranking</b>.</li>
+    <li>Benefits: current and private knowledge, fewer hallucinations, traceable sources, no retraining.</li>
+  </ul>
+  <h3>Agents with Foundry Agent Service</h3>
+  <p>An <b>agent</b> combines a model, <b>instructions</b> and <b>tools</b>, and decides which tools to call to complete a task.</p>
+  <div class="tw"><table>
+    <tr><th>Concept</th><th>Description</th></tr>
+    <tr><td>Agent</td><td>Model + instructions + tools (+ knowledge).</td></tr>
+    <tr><td>Thread</td><td>A persistent conversation that stores messages.</td></tr>
+    <tr><td>Message</td><td>A user or agent turn in a thread.</td></tr>
+    <tr><td>Run</td><td>One execution of the agent on a thread; may include tool calls.</td></tr>
+  </table></div>
+  <div class="tw"><table>
+    <tr><th>Tool</th><th>Use</th></tr>
+    <tr><td>Code interpreter</td><td>Runs Python in a sandbox for math, data analysis, charts, file generation.</td></tr>
+    <tr><td>File search</td><td>Searches uploaded documents (managed vector store).</td></tr>
+    <tr><td>Azure AI Search</td><td>Grounds answers on an existing search index.</td></tr>
+    <tr><td>Grounding with Bing Search</td><td>Retrieves current public web information.</td></tr>
+    <tr><td>Function calling</td><td>The model returns a function name and JSON arguments; <i>your app runs the function</i> and returns the result.</td></tr>
+    <tr><td>OpenAPI / Azure Functions / Logic Apps</td><td>Call external REST APIs or workflows.</td></tr>
+    <tr><td>Model Context Protocol (MCP)</td><td>Open standard for connecting agents to external tools and data sources.</td></tr>
+    <tr><td>Connected agents</td><td>Multi-agent patterns where one agent delegates to specialist agents.</td></tr>
+  </table></div>
+  <ul>
+    <li><b>Microsoft Agent Framework</b>: open-source SDK for building single and multi-agent apps (successor to Semantic Kernel and AutoGen patterns).</li>
+    <li><b>Observability</b>: tracing shows model calls, tool calls and latency for debugging. <b>Evaluations</b> measure quality (groundedness, relevance, coherence, fluency) and safety.</li>
+    <li><b>Governance</b>: apply content filters, least-privilege access to tools, and human approval for high-impact actions.</li>
+  </ul>
+  <div class="trap"><b>Trap.</b> RAG does <i>not</i> retrain the model; fine-tuning changes the model; prompt engineering changes only the input. Agents differ from plain chat because they can plan and act through tools.</div>
+</section>
+
+<section class="card" id="s22">
+  <h2>2.2 Implement AI solutions for text and speech by using Foundry</h2>
+  <h3>Azure AI Language (text analysis)</h3>
+  <div class="tw"><table>
+    <tr><th>Capability</th><th>Output</th></tr>
+    <tr><td>Sentiment analysis and opinion mining</td><td>Positive / neutral / negative with confidence scores; opinion mining links sentiment to aspects (for example "room" is negative).</td></tr>
+    <tr><td>Key phrase extraction</td><td>Main talking points of a document.</td></tr>
+    <tr><td>Language detection</td><td>Language name, ISO code, confidence score.</td></tr>
+    <tr><td>Named entity recognition (NER)</td><td>People, places, organizations, dates, quantities, with categories.</td></tr>
+    <tr><td>Entity linking</td><td>Disambiguates entities and links to Wikipedia entries.</td></tr>
+    <tr><td>PII detection</td><td>Finds and redacts personal data (emails, phone numbers, IDs).</td></tr>
+    <tr><td>Summarization</td><td>Extractive (selects key sentences) or abstractive (writes new summary text).</td></tr>
+    <tr><td>Conversational language understanding (CLU)</td><td>Predicts <b>intent</b> (goal) and <b>entities</b> from <b>utterances</b>; you define and train them. Replaces LUIS.</td></tr>
+    <tr><td>Custom question answering</td><td>Answers from a knowledge base of FAQs and documents. Replaces QnA Maker.</td></tr>
+    <tr><td>Custom text classification / custom NER</td><td>Train on your labels and entity types.</td></tr>
+  </table></div>
+  <p>Generative models in Foundry can also perform these tasks through prompting; pre-built Language features are simpler, cheaper and deterministic for well-defined tasks.</p>
+  <h3>Azure AI Translator</h3>
+  <ul>
+    <li>Text translation across 100+ languages (with auto language detection, transliteration, dictionary).</li>
+    <li>Document translation preserves layout and format. Custom Translator adapts to domain vocabulary.</li>
+  </ul>
+  <h3>Azure AI Speech</h3>
+  <div class="tw"><table>
+    <tr><th>Capability</th><th>Notes</th></tr>
+    <tr><td>Speech to text</td><td>Real-time, fast transcription, and <b>batch transcription</b> (asynchronous for large audio). Supports diarization (who spoke when), punctuation, custom speech for domain terms.</td></tr>
+    <tr><td>Text to speech</td><td>Neural voices; control pitch, rate, pronunciation, emphasis and style with <b>SSML</b>. Custom neural voice is Limited Access.</td></tr>
+    <tr><td>Speech translation</td><td>Real-time translation of spoken language to text or speech in another language.</td></tr>
+    <tr><td>Keyword recognition</td><td>On-device wake word detection.</td></tr>
+    <tr><td>Pronunciation assessment</td><td>Scores learner pronunciation.</td></tr>
+    <tr><td>Voice Live / real-time audio models</td><td>Low-latency speech-in, speech-out conversations with generative models for voice agents.</td></tr>
+  </table></div>
+  <div class="tip"><b>Typical solution.</b> Voice assistant = Speech to text (hear) → Language model or CLU (understand and decide) → Text to speech (speak).</div>
+  <div class="trap"><b>Trap.</b> Language service analyzes <i>written text</i>; Speech handles <i>audio</i>; Translator handles <i>translation of text/documents</i>; Speech translation handles <i>spoken</i> translation.</div>
+</section>
+
+<section class="card" id="s23">
+  <h2>2.3 Implement AI solutions with computer vision and image generation by using Foundry</h2>
+  <h3>Azure AI Vision</h3>
+  <div class="tw"><table>
+    <tr><th>Feature</th><th>Description</th></tr>
+    <tr><td>Image Analysis (4.0)</td><td>Captions and dense captions, tags, object detection, people detection, smart crop, background removal.</td></tr>
+    <tr><td>OCR (Read)</td><td>Extracts printed and handwritten text from images and documents, many languages.</td></tr>
+    <tr><td>Custom image models</td><td>Train your own image classification or object detection models from labeled images.</td></tr>
+    <tr><td>Multimodal embeddings</td><td>Vectors for image-to-text and image-to-image search.</td></tr>
+    <tr><td>Video / spatial analysis</td><td>Analyze people movement and occupancy in video feeds; <b>Azure Video Indexer</b> extracts transcripts, faces, topics, scenes and labels from video.</td></tr>
+  </table></div>
+  <h3>Face</h3>
+  <ul>
+    <li>Detection (locations and attributes), verification (same person?), identification (who is this?), similarity, grouping, liveness detection.</li>
+    <li>Identification and verification are <b>Limited Access</b> features and require approval, reflecting responsible-AI concerns (privacy, fairness, consent).</li>
+  </ul>
+  <h3>Multimodal chat models</h3>
+  <ul>
+    <li>Models such as GPT-4o class models accept <b>text and images</b> in the same prompt: describe images, read charts, answer questions about diagrams, compare photos.</li>
+    <li>Choose Vision service for fast, structured, low-cost analysis; choose a multimodal model for open-ended reasoning about images.</li>
+  </ul>
+  <h3>Image generation</h3>
+  <ul>
+    <li>Models (DALL-E 3, GPT-image family) create images from <b>text prompts</b>; some also support edits and variations.</li>
+    <li>Settings include size, quality, style and number of images. Detailed prompts (subject, style, lighting, composition, medium) give better control.</li>
+    <li>Content filters apply to prompts and generated images; follow responsible AI practices such as labeling AI-generated content and respecting copyright and likeness.</li>
+  </ul>
+  <div class="tp trap"><b>Trap.</b> Classification answers "what is in the picture?"; object detection answers "what and where?"; OCR answers "what does the text say?"; segmentation answers "which pixels belong to which thing?".</div>
+</section>
+
+<section class="card" id="s24">
+  <h2>2.4 Implement AI solutions for information extraction by using Foundry</h2>
+  <h3>Azure AI Document Intelligence</h3>
+  <div class="tw"><table>
+    <tr><th>Model type</th><th>Details</th></tr>
+    <tr><td>Read</td><td>Extracts printed and handwritten text, lines, words and languages.</td></tr>
+    <tr><td>Layout</td><td>Text plus tables, selection marks (checkboxes), paragraphs, headings and structure; can output Markdown that is ideal for RAG chunking.</td></tr>
+    <tr><td>Prebuilt models</td><td>Invoice, receipt, ID document, business card, W-2 and other tax forms, health insurance card, contracts, and more. Return named fields.</td></tr>
+    <tr><td>Custom models</td><td>Train on your own forms. <b>Template</b> models suit fixed layouts; <b>neural</b> models handle varied layouts. <b>Composed</b> models route a document to the right custom model.</td></tr>
+  </table></div>
+  <ul>
+    <li>Output is JSON with extracted <b>fields</b>, <b>key-value pairs</b>, <b>tables</b>, <b>bounding polygons</b> and a <b>confidence score</b> for each value. Use confidence thresholds to decide when to send items for human review.</li>
+    <li>Use prebuilt first; train custom only when no prebuilt model fits.</li>
+  </ul>
+  <h3>Azure AI Content Understanding</h3>
+  <ul>
+    <li>Multimodal service that turns <b>documents, images, audio and video</b> into structured output.</li>
+    <li>You define an <b>analyzer</b> with a <b>field schema</b> (what to extract); it performs content extraction (text, transcripts, layout) and generative field extraction. Prebuilt analyzers exist for common cases.</li>
+    <li>Use when inputs are mixed media or when fields need reasoning or summarization, for example extracting call-center insights from audio or key moments from video.</li>
+  </ul>
+  <h3>Azure AI Search with AI enrichment (knowledge mining)</h3>
+  <ul>
+    <li>Components: <b>data source</b> → <b>indexer</b> → <b>skillset</b> (enrichment pipeline) → <b>index</b>. Optional <b>knowledge store</b> saves enriched data to storage for analytics.</li>
+    <li>Built-in skills: OCR, image analysis, key phrases, entity recognition, language detection, translation, PII, text split. <b>Custom skills</b> call your own API or model.</li>
+    <li>Query with full-text, vector, hybrid and semantic ranking.</li>
+  </ul>
+  <h3>Other extraction options</h3>
+  <ul>
+    <li><b>Azure AI Language</b> for entities, PII and key phrases from plain text.</li>
+    <li><b>LLM-based extraction</b> with <b>structured outputs</b> (JSON schema) forces the model to return valid, schema-conforming JSON, useful for custom fields. Validate results, because models can still err.</li>
+  </ul>
+  <div class="tp trap"><b>Choosing quickly.</b> Standard form (invoice, receipt, ID) → Document Intelligence prebuilt. Unique forms → custom model. Audio/video/mixed → Content Understanding. Search over huge archives → AI Search with skillset. Just text entities/PII → Language.</div>
+</section>
+
+<section class="card" id="sheet">
+  <h2>Service-to-scenario cheat sheet</h2>
+  <div class="tw"><table>
+    <tr><th>Scenario</th><th>Best fit</th></tr>
+    <tr><td>Chat assistant that drafts or summarizes</td><td>Foundry GPT chat model</td></tr>
+    <tr><td>Answer questions from company documents</td><td>RAG with Azure AI Search</td></tr>
+    <tr><td>Assistant that books, calls APIs, runs code</td><td>Foundry Agent Service with tools</td></tr>
+    <tr><td>Detect positive or negative reviews</td><td>Azure AI Language sentiment analysis</td></tr>
+    <tr><td>Remove emails and phone numbers from text</td><td>Language PII detection</td></tr>
+    <tr><td>Determine user intent in a chatbot</td><td>Language CLU</td></tr>
+    <tr><td>Translate documents or speech</td><td>Translator / Speech translation</td></tr>
+    <tr><td>Transcribe meetings; read text aloud</td><td>Speech to text; text to speech (SSML)</td></tr>
+    <tr><td>Caption or tag photos; read text in photos</td><td>Azure AI Vision Image Analysis; OCR</td></tr>
+    <tr><td>Find and locate products in shelf photos</td><td>Object detection (custom if needed)</td></tr>
+    <tr><td>Insights from video archives</td><td>Azure Video Indexer / Content Understanding</td></tr>
+    <tr><td>Create marketing images from a prompt</td><td>Image generation model</td></tr>
+    <tr><td>Pull totals and vendors from invoices</td><td>Document Intelligence prebuilt invoice</td></tr>
+    <tr><td>Structured data from audio, video and documents</td><td>Content Understanding</td></tr>
+    <tr><td>Predict a price; group customers; flag fraud</td><td>Regression; clustering; anomaly detection (Azure ML)</td></tr>
+  </table></div>
+</section>
+
+<section class="card" id="traps">
+  <h2>Common exam traps</h2>
+  <ul>
+    <li><b>Transparency vs accountability.</b> Explaining how the system works and its limits is transparency; who answers for it and oversight is accountability.</li>
+    <li><b>Inclusiveness vs fairness.</b> Designing for people of all abilities is inclusiveness; equitable outcomes across groups is fairness.</li>
+    <li><b>Reliability vs privacy.</b> Safe, consistent operation is reliability and safety; protecting data is privacy and security.</li>
+    <li><b>Temperature vs top P.</b> Both control randomness; change one at a time. Lower values are more deterministic.</li>
+    <li><b>Penalties.</b> Frequency penalty scales with repetition count; presence penalty applies once a token has appeared at all.</li>
+    <li><b>Precision vs recall.</b> Precision focuses on false positives; recall focuses on false negatives.</li>
+    <li><b>Regression vs classification.</b> A number is regression, even if rounded; a named category is classification.</li>
+    <li><b>Clustering vs classification.</b> Clustering has no labels; classification does.</li>
+    <li><b>Fine-tuning does not guarantee new knowledge.</b> Use RAG for changing facts.</li>
+    <li><b>Function calling.</b> The model suggests the call; your application executes it.</li>
+    <li><b>OCR vs Document Intelligence.</b> OCR returns text; Document Intelligence returns text <i>and</i> structure and named fields.</li>
+    <li><b>Face features.</b> Identification and verification need Limited Access approval.</li>
+  </ul>
+</section>
+
+<section class="card" id="gloss">
+  <h2>Glossary</h2>
+  <div class="tw"><table>
+    <tr><th>Term</th><th>Definition</th></tr>
+    <tr><td>Agent</td><td>Model plus instructions and tools that can plan and act.</td></tr>
+    <tr><td>Analyzer</td><td>Content Understanding configuration that defines what to extract.</td></tr>
+    <tr><td>Attention</td><td>Transformer mechanism weighing token relationships.</td></tr>
+    <tr><td>Bounding box / polygon</td><td>Coordinates locating an object or text.</td></tr>
+    <tr><td>Chunking</td><td>Splitting documents into pieces for embedding and retrieval.</td></tr>
+    <tr><td>Confidence score</td><td>0 to 1 value showing certainty of a prediction or extraction.</td></tr>
+    <tr><td>Deployment</td><td>A named, callable instance of a model in Foundry.</td></tr>
+    <tr><td>Diarization</td><td>Labeling which speaker spoke when.</td></tr>
+    <tr><td>Embedding</td><td>Numeric vector representing meaning.</td></tr>
+    <tr><td>Grounding</td><td>Anchoring output in trusted data.</td></tr>
+    <tr><td>Hallucination</td><td>Plausible but unsupported or false output.</td></tr>
+    <tr><td>Inference</td><td>Using a trained model to predict or generate.</td></tr>
+    <tr><td>Intent / entity / utterance</td><td>User goal / key item in the text / what the user says.</td></tr>
+    <tr><td>Jailbreak / prompt injection</td><td>Attempts to override model instructions or safety rules.</td></tr>
+    <tr><td>MCP</td><td>Model Context Protocol, open standard for connecting tools and data to agents.</td></tr>
+    <tr><td>Metaprompt</td><td>System message that defines behavior and boundaries.</td></tr>
+    <tr><td>RAG</td><td>Retrieval-augmented generation.</td></tr>
+    <tr><td>Red teaming</td><td>Adversarial testing to uncover harms.</td></tr>
+    <tr><td>SSML</td><td>Speech Synthesis Markup Language for voice control.</td></tr>
+    <tr><td>Token</td><td>Unit of text processed by a language model.</td></tr>
+    <tr><td>Vector index</td><td>Store enabling similarity search over embeddings.</td></tr>
+  </table></div>
+  <p class="meta">This reviewer follows the published AI-901 skill areas. Product names and limits evolve, so verify against the current Microsoft Learn study guide and documentation before your exam.</p>
+</section>
+</main>
+
+<!-- ===================== EXAM ===================== -->
+<div id="exam">
+  <div id="gate" class="box">
+    <h2 style="margin-top:0">Practice certification exam</h2>
+    <p>This exam is protected. Enter your access code to continue.</p>
+    <p><input class="pw" id="pw" type="password" placeholder="Access code" autocomplete="off" aria-label="Access code"></p>
+    <p class="err" id="pwerr" role="alert"></p>
+    <button class="btn" id="pwgo">Enter exam</button>
+    <button class="btn alt" id="back1">Back to reviewer</button>
+  </div>
+
+  <div id="lobby" class="box" style="display:none">
+    <h2 style="margin-top:0">AI-901 practice exam</h2>
+    <ul>
+      <li><b>50 questions</b> are drawn at random from a bank of 100, so each attempt differs. Question order and answer order are shuffled and renumbered every time.</li>
+      <li>Formats: multiple choice, select multiple, yes/no statement sets, and drag-and-drop matching.</li>
+      <li>Time limit: 60 minutes. Passing score: 700 of 1000. You can flag questions and move freely before submitting.</li>
+      <li>Drag-and-drop: drag a choice into a box, or tap a choice and then tap a box. Tap a filled box to return the choice.</li>
+    </ul>
+    <button class="btn" id="startBtn">Start exam</button>
+    <button class="btn alt" id="back2">Back to reviewer</button>
+  </div>
+
+  <div id="run" style="display:none">
+    <div class="bar"><span id="qn"></span><span id="tm" role="timer">60:00</span><button class="btn alt" id="subTop">Submit exam</button></div>
+    <div class="prog"><i id="pg"></i></div>
+    <div class="box" id="qbox"></div>
+    <div class="nav">
+      <button class="btn alt" id="prev">Previous</button>
+      <button class="btn alt" id="flag">Flag for review</button>
+      <button class="btn" id="next">Next</button>
+    </div>
+    <div class="box" style="margin-top:18px"><b>Question navigator</b> <span class="note">(filled = answered, gold underline = flagged)</span><div class="pal" id="pal"></div></div>
+  </div>
+
+  <div id="res" style="display:none"></div>
+</div>
+
+<script>
+/* ---------- menu ---------- */
+const $=s=>document.querySelector(s);
+const body=document.body;
+function setMenu(o){body.classList.toggle('open',o);$('#tg').setAttribute('aria-expanded',o);$('#tg').textContent=o?'Close menu':'Menu'}
+$('#tg').onclick=()=>setMenu(!body.classList.contains('open'));
+setMenu(window.innerWidth>=1180);
+function showView(v){body.classList.toggle('ex',v==='e');window.scrollTo(0,0)}
+document.querySelectorAll('#side a[data-v]').forEach(a=>a.addEventListener('click',()=>{if(body.classList.contains('ex'))showView('r');if(window.innerWidth<1180)setMenu(false)}));
+$('#goExam').onclick=()=>{showView('e');if(window.innerWidth<1180)setMenu(false)};
+$('#back1').onclick=$('#back2').onclick=()=>showView('r');
+
+/* ---------- password gate ---------- */
+const OK=['SlhQMDAx','SkdUMDAx','TVJKVDAwMQ=='];
+let unlocked=false;
+function tryPw(){const v=$('#pw').value.trim().toUpperCase();
+  if(OK.includes(btoa(v))){unlocked=true;$('#pw').value='';$('#pwerr').textContent='';$('#gate').style.display='none';$('#lobby').style.display='block'}
+  else{$('#pwerr').textContent='Incorrect access code.'}}
+$('#pwgo').onclick=tryPw;$('#pw').addEventListener('keydown',e=>{if(e.key==='Enter')tryPw()});
+
+/* ---------- question bank (100) ---------- */
+const M=(d,q,o,a,e)=>({t:'mc',d,q,o,a,e});
+const S=(d,q,o,a,e)=>({t:'ms',d,q,o,a,e});
+const Y=(d,q,s,e)=>({t:'yn',d,q,s,e});
+const D=(d,q,p,e)=>({t:'dd',d,q,p,e});
+const BANK=[
+/* 1.1 Responsible AI */
+M('1.1','A loan-approval model approves noticeably fewer applications from one demographic group than from others with similar qualifications. Which responsible AI principle is violated?',['Fairness','Transparency','Inclusiveness','Accountability'],0,'Fairness requires similar outcomes for similarly situated groups.'),
+M('1.1','Users are told they are chatting with an AI system and are given a clear explanation of its limitations. Which principle does this support?',['Transparency','Privacy and security','Reliability and safety','Fairness'],0,'Transparency means people understand what the system is and how it behaves.'),
+M('1.1','A company adds captions, screen-reader support and voice input so people with disabilities can use its AI app. Which principle is being applied?',['Inclusiveness','Accountability','Fairness','Transparency'],0,'Inclusiveness empowers everyone, including people with disabilities.'),
+M('1.1','A medical triage bot is stress-tested with unusual inputs to confirm it fails safely. Which principle does this support?',['Reliability and safety','Inclusiveness','Transparency','Privacy and security'],0,'Reliable and safe systems behave consistently and fail safely.'),
+M('1.1','Training data is encrypted, and access is restricted with role-based access control. Which principle is this?',['Privacy and security','Fairness','Accountability','Inclusiveness'],0,'Protecting data and limiting access is privacy and security.'),
+M('1.1','An organization assigns owners, creates a review board and requires human oversight of AI decisions. Which principle is this?',['Accountability','Fairness','Reliability and safety','Inclusiveness'],0,'Accountability means people are answerable and governance exists.'),
+S('1.1','Which TWO are harm categories detected by Azure AI Content Safety?',['Hate','Violence','Sentiment','Translation error'],[0,1],'Content Safety categories: hate, sexual, violence and self-harm.'),
+Y('1.1','Decide whether each statement about responsible AI is correct.',[['Fairness means AI systems treat all groups of people equitably.',true],['Transparency requires that every model be open source.',false],['Human oversight supports the accountability principle.',true]],'Transparency is about understanding and disclosure, not open-sourcing.'),
+M('1.1','A user types text intended to make a chatbot ignore its system instructions. What is this attack called?',['Jailbreak or prompt injection','Overfitting','Data drift','Underfitting'],0,'Prompt Shields help detect jailbreak and injection attempts.'),
+M('1.1','A generative model states facts that are not supported by the source documents it was given. What is this called?',['Ungrounded content (hallucination)','Overfitting','Data leakage','Tokenization'],0,'Hallucination = fluent output unsupported by source data.'),
+D('1.1','Match each scenario to the responsible AI principle.',[['A model does not disadvantage applicants because of gender','Fairness'],['Personal data is protected and access is controlled','Privacy and security'],['Users can see the system limitations and how it works','Transparency'],['People are responsible for governance of the AI system','Accountability']],'Each scenario maps to one of the six principles.'),
+M('1.1','In Microsoft\'s approach to mitigating generative AI harms, which stage involves testing the system to quantify how often harmful output occurs?',['Measure','Identify','Operate','Deploy'],0,'The stages are Identify, Measure, Mitigate and Operate.'),
+S('1.1','Which TWO are layers at which generative AI harms are mitigated?',['Safety system layer','User experience layer','Hardware layer','Billing layer'],[0,1],'Layers: model, safety system, system message and grounding, user experience.'),
+Y('1.1','Decide whether each statement about content safety is correct.',[['Content filters can be configured and attached to a model deployment.',true],['Azure AI Content Safety can help detect protected material in output.',true],['Content filtering guarantees that no harmful output will ever be produced.',false]],'No filter is perfect; layered defenses and oversight are needed.'),
+M('1.1','Which document describes a service\'s intended uses, capabilities and limitations to support transparency?',['Transparency note','Invoice','Service quota sheet','Pricing calculator'],0,'Microsoft publishes Transparency Notes for AI services.'),
+/* 1.2 Model components */
+M('1.2','Which type of machine learning predicts a numeric value such as the price of a house?',['Regression','Classification','Clustering','Anomaly detection'],0,'Regression predicts numbers.'),
+M('1.2','A retailer wants to group customers by similar behavior without predefined categories. Which technique fits?',['Clustering','Regression','Binary classification','Forecasting'],0,'Clustering is unsupervised grouping.'),
+M('1.2','A model decides whether an email is spam or not spam. What type of model is this?',['Binary classification','Regression','Clustering','Semantic segmentation'],0,'Two categories = binary classification.'),
+M('1.2','In supervised learning, what is the name of the column the model is trained to predict?',['Label','Feature','Token','Embedding'],0,'The label is the target (y); features are inputs (x).'),
+M('1.2','A model scores very high on training data but poorly on new data. What is this problem?',['Overfitting','Underfitting','Inference','Tokenization'],0,'Overfitting memorizes training data and generalizes poorly.'),
+M('1.2','Which metric measures the proportion of actual positive cases that the model correctly identified?',['Recall','Precision','RMSE','R-squared'],0,'Recall = TP / (TP + FN).'),
+S('1.2','Which TWO are evaluation metrics for regression models?',['Mean absolute error (MAE)','R-squared','Recall','F1 score'],[0,1],'MAE, MSE, RMSE and R² evaluate regression; recall and F1 are classification metrics.'),
+D('1.2','Match each language model setting to its effect.',[['Temperature','Controls randomness of output'],['Max tokens','Limits the length of the response'],['Top P','Samples from tokens within a probability mass'],['Stop sequence','Ends generation when specific text appears']],'These are common generation parameters.'),
+M('1.2','Which technique converts text into numeric vectors that capture semantic meaning?',['Embeddings','Tokenization only','Diarization','OCR'],0,'Embeddings place similar meanings near each other.'),
+M('1.2','You want a model\'s answers to be more consistent and repeatable. Which change helps most?',['Lower the temperature','Raise the temperature','Raise the presence penalty','Increase max tokens'],0,'Lower temperature gives more deterministic output.'),
+Y('1.2','Decide whether each statement about language models is correct.',[['A token is always exactly one whole word.',false],['The context window limits the combined tokens of prompt and response.',true],['Transformer models use attention mechanisms.',true]],'Tokens can be sub-words or punctuation.'),
+M('1.2','You further train a pretrained model with your own labeled examples to change its style and format. What is this called?',['Fine-tuning','Retrieval-augmented generation','Prompt engineering','Clustering'],0,'Fine-tuning adapts model weights with custom examples.'),
+S('1.2','Which TWO items does an application typically need to call a deployed model in Foundry?',['The endpoint URL','Credentials (key or Microsoft Entra ID)','The training dataset','A confusion matrix'],[0,1],'Apps need the endpoint, deployment name and authentication.'),
+D('1.2','Match each machine learning term to its definition.',[['Training','Learning patterns from data to create a model'],['Inference','Using a trained model to make predictions'],['Evaluation','Measuring performance on test data'],['Features','Input variables used to predict a label']],'Core ML vocabulary.'),
+M('1.2','Which statement best describes a small language model (SLM)?',['A compact model with lower cost and latency that can run on devices','A model that can only classify images','A model that cannot generate text','A model with no training data'],0,'SLMs trade some capability for efficiency.'),
+/* 1.3 Workloads */
+M('1.3','A company wants to extract vendor names and totals from scanned receipts. Which AI workload is this?',['Information extraction','Anomaly detection','Speech synthesis','Forecasting'],0,'Pulling structured fields from documents is information extraction.'),
+M('1.3','A factory wants to flag unusual readings from machine sensors. Which workload is this?',['Anomaly detection','Image classification','Translation','Knowledge mining'],0,'Anomaly detection finds unusual patterns.'),
+M('1.3','Creating new text or images from natural-language prompts is an example of which workload?',['Generative AI','Anomaly detection','Clustering','Regression'],0,'Generative AI creates new content.'),
+M('1.3','Determining whether customer reviews are positive or negative is which type of workload?',['Natural language processing','Computer vision','Speech','Forecasting'],0,'Sentiment analysis is NLP.'),
+M('1.3','Transcribing recorded customer calls into text is which workload?',['Speech','Computer vision','Anomaly detection','Image generation'],0,'Speech to text is a speech workload.'),
+M('1.3','Predicting next month\'s sales from historical monthly data is an example of which workload?',['Forecasting','Object detection','Entity recognition','Image analysis'],0,'Forecasting predicts future values from time-series data.'),
+D('1.3','Match each scenario to the AI workload.',[['Identify objects in photos','Computer vision'],['Extract key phrases from reviews','Natural language processing'],['Convert spoken audio to text','Speech'],['Draft an email from a prompt','Generative AI']],'Match input type to workload.'),
+Y('1.3','Decide whether each statement about AI workloads is correct.',[['AI agents can use tools to take actions.',true],['Knowledge mining extracts insights from large volumes of unstructured content.',true],['Anomaly detection is a generative AI workload.',false]],'Anomaly detection identifies unusual data; it does not generate content.'),
+M('1.3','A chatbot should answer employees\' questions using the company\'s own policy documents. Which approach fits?',['Generative AI with retrieval-augmented generation','Object detection','Clustering','Speech synthesis'],0,'RAG grounds generative answers in your documents.'),
+M('1.3','A system plans steps, calls tools and completes tasks on its own toward a goal. What is it?',['An AI agent','A regression model','A confusion matrix','A clustering model'],0,'Agents combine a model, instructions and tools.'),
+S('1.3','Which TWO are natural language processing workloads?',['Entity recognition','Translation','Object detection','Image tagging'],[0,1],'Object detection and image tagging are computer vision.'),
+M('1.3','An organization wants to make millions of PDFs and images searchable by extracting and enriching their content. Which workload is this?',['Knowledge mining','Anomaly detection','Speech translation','Regression'],0,'Knowledge mining uses enrichment pipelines such as Azure AI Search skillsets.'),
+D('1.3','Match each Azure AI capability to the task it supports.',[['Azure AI Vision','Generate captions and tags for images'],['Azure AI Speech','Convert speech to text'],['Azure AI Language','Detect sentiment in text'],['Azure AI Document Intelligence','Extract fields from invoices']],'Each service targets a different input type.'),
+M('1.3','Which computer vision task returns object labels together with their bounding-box locations?',['Object detection','Image classification','OCR','Language detection'],0,'Detection = what and where.'),
+Y('1.3','Decide whether each statement is correct.',[['Translation is a natural language processing workload.',true],['Speech synthesis converts text into spoken audio.',true],['OCR is a forecasting workload.',false]],'OCR reads text from images and is a computer vision capability.'),
+/* 2.1 Generative AI apps and agents */
+M('2.1','Where in the Foundry portal can you test a system message and model parameters before writing code?',['Chat playground','Billing blade','Cost analysis','Resource lock'],0,'Playgrounds let you iterate interactively.'),
+M('2.1','What must you do before an application can call a model from the Foundry model catalog?',['Deploy the model','Fine-tune the model','Train the model from scratch','Convert it to ONNX'],0,'Apps call a named deployment.'),
+M('2.1','How can you make a chat model answer using your own documents without retraining it?',['Use retrieval-augmented generation with Azure AI Search','Increase the temperature','Raise max tokens','Switch to a smaller model'],0,'RAG retrieves data at query time and adds it to the prompt.'),
+S('2.1','Which TWO are core concepts in Foundry Agent Service?',['Thread','Run','Epoch','Cluster'],[0,1],'Agents operate on threads; each execution is a run.'),
+D('2.1','Match each agent tool to its purpose.',[['Code interpreter','Runs Python in a sandbox'],['File search','Searches uploaded documents'],['Function calling','Calls your own code or API'],['Grounding with Bing Search','Retrieves current web information']],'Tools extend what an agent can do.'),
+M('2.1','What is the purpose of the system message in a chat deployment?',['Define the assistant\'s role, behavior and rules','Store user billing data','Encrypt the endpoint','Set the deployment region'],0,'The system message steers behavior for the whole conversation.'),
+Y('2.1','Decide whether each statement is correct.',[['Chat messages use roles such as system, user and assistant.',true],['Few-shot prompting includes example input-output pairs in the prompt.',true],['Retrieval-augmented generation retrains the model\'s weights.',false]],'RAG changes the prompt, not the model.'),
+M('2.1','What does RAG do before the model generates an answer?',['Retrieves relevant data and adds it to the prompt','Retrains the model on new data','Deletes old conversations','Converts audio to text'],0,'Retrieve, augment, generate.'),
+M('2.1','Which open standard lets agents connect to external tools and data sources in a consistent way?',['Model Context Protocol (MCP)','SMTP','RDP','FTP'],0,'MCP standardizes tool and data connections for agents.'),
+M('2.1','In a RAG solution, what is an embeddings model used for?',['Converting documents and queries into vectors for similarity search','Generating images','Translating speech','Compressing audio'],0,'Embeddings enable vector search.'),
+M('2.1','Which Foundry construct organizes agents, deployments, files and evaluations for one application?',['Project','Subscription tag','Resource lock','Availability set'],0,'Projects group the assets for an app.'),
+M('2.1','Which Foundry capability helps you measure groundedness, relevance and coherence of model responses?',['Evaluations','Autoscale','Load balancer','Cost alerts'],0,'Evaluations score quality and safety.'),
+S('2.1','Which TWO techniques improve model output without retraining the model?',['Prompt engineering','Retrieval-augmented generation','Fine-tuning','Pretraining from scratch'],[0,1],'Fine-tuning and pretraining modify the model.'),
+Y('2.1','Decide whether each statement about agents is correct.',[['Multiple agents can collaborate in a multi-agent solution.',true],['An agent can only respond with plain text and cannot call tools.',false],['Tracing helps debug an agent\'s model and tool calls.',true]],'Agents use tools; tracing improves observability.'),
+M('2.1','Which Microsoft open-source SDK is designed for building single-agent and multi-agent applications?',['Microsoft Agent Framework','Power BI Desktop','Azure DevOps','Azure Monitor'],0,'Microsoft Agent Framework is the agent-building SDK.'),
+M('2.1','What is the recommended keyless way for an app to authenticate to a Foundry resource?',['Microsoft Entra ID with a managed identity','A shared password in source code','Anonymous access','A storage account key'],0,'Entra ID avoids storing keys in code.'),
+D('2.1','Match each approach to its description.',[['Prompt engineering','Craft instructions and examples in the prompt'],['RAG','Retrieve external data at query time'],['Fine-tuning','Further train a model on custom examples'],['Agent','Uses a model to plan and invoke tools']],'Four ways to shape generative AI behavior.'),
+M('2.1','In function calling, what does the model return?',['The function name and JSON arguments; the app runs the function','The executed result of the function by itself','A trained model','An encrypted key'],0,'Your application executes the function and sends back the result.'),
+M('2.1','What is the main benefit of streaming responses in a chat app?',['Users see output as it is generated, reducing perceived latency','It retrains the model','It lowers content filtering','It removes the need for tokens'],0,'Streaming sends tokens as they are produced.'),
+Y('2.1','Decide whether each statement is correct.',[['The Foundry model catalog includes models from multiple providers.',true],['You must deploy a model before calling it from an application.',true],['Content filters apply only to image generation.',false]],'Filters apply to prompts and completions across model types.'),
+/* 2.2 Text and speech */
+M('2.2','Which Azure AI Language feature determines whether text is positive, neutral or negative?',['Sentiment analysis','Key phrase extraction','Language detection','Entity linking'],0,'Sentiment analysis returns labels and confidence scores.'),
+M('2.2','Which feature identifies names of people, places and organizations in text?',['Named entity recognition','Language detection','Summarization','Translation'],0,'NER categorizes entities.'),
+M('2.2','You must find and redact Social Security numbers and email addresses in documents. Which feature should you use?',['PII detection','Key phrase extraction','Sentiment analysis','Speech translation'],0,'PII detection finds and redacts personal data.'),
+M('2.2','In conversational language understanding, what is the goal of a user\'s utterance called?',['Intent','Entity','Token','Label set'],0,'Intents are goals; entities are details.'),
+S('2.2','Which TWO are capabilities of Azure AI Speech?',['Speech to text','Text to speech','Key phrase extraction','Sentiment analysis'],[0,1],'Key phrases and sentiment are Language features.'),
+M('2.2','What can you use to control pronunciation, pitch and speaking rate in synthesized speech?',['SSML','JSON Schema','OpenAPI','YAML pipelines'],0,'Speech Synthesis Markup Language customizes voice output.'),
+M('2.2','A meeting app must translate a speaker\'s words into another language in real time. Which capability fits?',['Speech translation','Key phrase extraction','Document translation','Entity linking'],0,'Speech translation handles spoken input.'),
+D('2.2','Match each Azure AI Language feature to its purpose.',[['Key phrase extraction','Identify the main talking points'],['Language detection','Determine the language of text'],['Entity linking','Disambiguate entities with reference links'],['Summarization','Condense a long document']],'Four text analysis features.'),
+Y('2.2','Decide whether each statement is correct.',[['Azure AI Translator can translate documents while preserving format.',true],['Speech to text can only be performed as batch transcription.',false],['Custom question answering returns answers from a knowledge base.',true]],'Speech to text supports real-time and batch modes.'),
+M('2.2','You need to transcribe thousands of hours of stored audio asynchronously. Which option fits best?',['Batch transcription','Real-time transcription in a browser','Text to speech','Keyword recognition'],0,'Batch transcription processes large audio sets asynchronously.'),
+M('2.2','Which speech capability labels which speaker spoke at which time?',['Diarization','Summarization','Entity linking','Tokenization'],0,'Diarization separates speakers.'),
+M('2.2','An e-commerce site must translate product descriptions into ten languages. Which service fits?',['Azure AI Translator','Azure AI Vision','Document Intelligence','Azure AI Search'],0,'Translator handles text and document translation.'),
+M('2.2','Which option supports low-latency, speech-in and speech-out conversations with generative models?',['Voice Live or real-time audio models','Batch transcription','Entity linking','Custom Translator'],0,'Real-time audio models power voice agents.'),
+S('2.2','Which TWO are features of Azure AI Language?',['Summarization','Named entity recognition','Face detection','Optical character recognition'],[0,1],'Face detection and OCR belong to vision services.'),
+Y('2.2','Decide whether each statement is correct.',[['Key phrase extraction returns sentiment scores for each sentence.',false],['Language detection returns a language code and confidence score.',true],['Text to speech can use neural voices.',true]],'Sentiment is a different feature from key phrases.'),
+/* 2.3 Vision and image generation */
+M('2.3','Which Azure AI Vision capability generates a descriptive sentence for a photo?',['Image captioning','OCR','Face verification','Spatial analysis'],0,'Image Analysis can produce captions and dense captions.'),
+M('2.3','Which capability extracts printed and handwritten text from an image?',['OCR (Read)','Image tagging','Smart crop','Object detection'],0,'Read OCR extracts text.'),
+M('2.3','Which task finds objects in an image and returns labels with bounding boxes?',['Object detection','Image classification','Sentiment analysis','Language detection'],0,'Detection locates objects.'),
+M('2.3','Which task assigns a single category to an entire image?',['Image classification','Object detection','Semantic segmentation','OCR'],0,'Classification labels the whole image.'),
+D('2.3','Match each vision task to its description.',[['Image classification','Assigns a label to the entire image'],['Object detection','Returns labels and bounding boxes'],['OCR','Reads printed or handwritten text'],['Face detection','Locates human faces in an image']],'Four vision tasks.'),
+M('2.3','Which type of Foundry model creates images from a text prompt?',['Image generation model','Embedding model','Speech recognition model','Translation model'],0,'DALL-E and GPT-image family models generate images.'),
+Y('2.3','Decide whether each statement is correct.',[['Face identification and verification can be Limited Access features requiring approval.',true],['Image generation models are subject to content filters.',true],['Object detection returns only one label per image.',false]],'Detection can return many objects.'),
+S('2.3','Which TWO are valid inputs to a multimodal chat model?',['Text','Images','Compiler output','SQL index files'],[0,1],'Multimodal models accept text and images.'),
+M('2.3','Which service extracts transcripts, faces, topics and scenes from video files?',['Azure Video Indexer','Azure AI Translator','Custom question answering','Azure Key Vault'],0,'Video Indexer derives insights from video.'),
+M('2.3','How can you improve the result of an image generation request?',['Use a more detailed prompt describing subject, style and composition','Lower the max tokens','Remove all adjectives','Use a speech model'],0,'Detailed prompts give better control.'),
+/* 2.4 Information extraction */
+M('2.4','You must extract vendor, invoice date and total from invoices. What is the quickest approach?',['Document Intelligence prebuilt invoice model','Train a clustering model','Azure AI Speech','Image generation'],0,'Prebuilt models return named fields for common documents.'),
+M('2.4','Which Document Intelligence model returns text, tables, selection marks and document structure?',['Layout','Language detection','Sentiment','Face'],0,'The layout model captures structure.'),
+M('2.4','What does the confidence score on an extracted field indicate?',['How certain the model is about the extracted value','The price of the call','The file size','The number of pages'],0,'Low confidence can trigger human review.'),
+S('2.4','Which TWO are Document Intelligence prebuilt models?',['Receipt','ID document','Sentiment','Translator'],[0,1],'Sentiment and Translator are different services.'),
+M('2.4','Which service turns documents, images, audio and video into structured output by using analyzers and field schemas?',['Azure AI Content Understanding','Azure AI Translator','Azure Monitor','Azure Policy'],0,'Content Understanding handles multimodal extraction.'),
+M('2.4','In Azure AI Search, what is a skillset?',['An AI enrichment pipeline applied during indexing','A pricing tier','A type of user role','A network rule'],0,'Skillsets add enrichment such as OCR and entity recognition.'),
+D('2.4','Match each service to its extraction role.',[['Document Intelligence','Extract key-value pairs and tables from forms'],['Content Understanding','Convert multimodal content into structured output'],['Azure AI Search','Index and query enriched content'],['Azure AI Language','Extract entities and PII from text']],'Each service fits a different extraction need.'),
+Y('2.4','Decide whether each statement is correct.',[['Custom extraction models can be trained on your own forms.',true],['Document Intelligence supports only printed English text.',false],['Structured outputs can constrain an LLM response to a JSON schema.',true]],'Document Intelligence supports many languages and handwriting.'),
+M('2.4','What is the purpose of a knowledge store in an Azure AI Search enrichment pipeline?',['Persist enriched data to storage for downstream analysis','Block malicious prompts','Train image models','Translate speech'],0,'Knowledge stores save enriched output as tables, objects or files.'),
+M('2.4','Which Document Intelligence model reads printed and handwritten text without extracting named fields?',['Read','Invoice','Receipt','Business card'],0,'The Read model returns text, lines and words.')
+];
+
+/* ---------- exam engine ---------- */
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const N=50,LIMIT=3600;
+let seen=new Set(),P=[],A=[],F=[],cur=0,left=0,timer=null,sel=null,done=false;
+
+function build(){
+  const ids=BANK.map((_,i)=>i);
+  let fresh=shuf(ids.filter(i=>!seen.has(i)));
+  if(fresh.length<N){seen.clear();fresh=shuf(ids)}
+  const pick=shuf(fresh.slice(0,N));
+  pick.forEach(i=>seen.add(i));
+  P=pick.map(id=>{const q=BANK[id];const x={...q,id};
+    if(q.t==='mc'||q.t==='ms')x.o2=shuf(q.o.map((t,i)=>({t,i})));
+    if(q.t==='yn')x.s2=shuf(q.s);
+    if(q.t==='dd')x.pool=shuf(q.p.map(r=>r[1]));
+    return x});
+  A=P.map(q=>q.t==='mc'?null:q.t==='ms'?[]:q.t==='yn'?q.s.map(()=>null):q.p.map(()=>null));
+  F=P.map(()=>false);cur=0;sel=null;done=false;
+}
+function start(){
+  build();left=LIMIT;
+  $('#lobby').style.display='none';$('#res').style.display='none';$('#run').style.display='block';
+  clearInterval(timer);timer=setInterval(()=>{left--;tick();if(left<=0){clearInterval(timer);submit(true)}},1000);tick();draw();window.scrollTo(0,0);
+}
+function tick(){const m=Math.floor(left/60),s=left%60;$('#tm').textContent='Time left '+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0')}
+function answered(i){const q=P[i],a=A[i];return q.t==='mc'?a!==null:q.t==='ms'?a.length>0:a.some(v=>v!==null)}
+function draw(){
+  const q=P[cur],a=A[cur];
+  $('#qn').textContent='Question '+(cur+1)+' of '+N;
+  $('#pg').style.width=((cur+1)/N*100)+'%';
+  let h='<p class="qt">'+esc(q.q)+'</p>';
+  if(q.t==='mc'){h+='<p class="note">Select one answer.</p>';q.o2.forEach((o,k)=>{h+='<div class="opt'+(a===k?' sel':'')+'" tabindex="0" role="radio" aria-checked="'+(a===k)+'" data-k="'+k+'"><span class="mk">'+(a===k?'●':'')+'</span><span>'+esc(o.t)+'</span></div>'})}
+  else if(q.t==='ms'){const need=q.a.length;h+='<p class="note">Select '+need+' answers.</p>';q.o2.forEach((o,k)=>{const on=a.includes(k);h+='<div class="opt ms'+(on?' sel':'')+'" tabindex="0" role="checkbox" aria-checked="'+on+'" data-k="'+k+'"><span class="mk">'+(on?'✓':'')+'</span><span>'+esc(o.t)+'</span></div>'})}
+  else if(q.t==='yn'){h+='<p class="note">For each statement, select Yes or No.</p><div class="tw"><table class="yn"><tr><th>Statement</th><th>Yes</th><th>No</th></tr>';q.s2.forEach((s,k)=>{h+='<tr><td>'+esc(s[0])+'</td><td><input type="radio" name="y'+k+'" data-k="'+k+'" data-v="1" aria-label="Yes"'+(a[k]===true?' checked':'')+'></td><td><input type="radio" name="y'+k+'" data-k="'+k+'" data-v="0" aria-label="No"'+(a[k]===false?' checked':'')+'></td></tr>'});h+='</table></div>'}
+  else{h+='<p class="note">Drag each choice into the matching box, or tap a choice and then tap a box.</p><div class="dd">';
+    q.p.forEach((r,k)=>{const v=a[k];h+='<div class="drow"><div class="lab">'+esc(r[0])+'</div><div class="zone'+(v!==null?' has':'')+'" tabindex="0" data-z="'+k+'">'+(v!==null?esc(q.pool[v]):'Drop answer here')+'</div></div>'});
+    h+='</div><div class="pool" id="pool">';q.pool.forEach((c,k)=>{if(!a.includes(k))h+='<div class="chip'+(sel===k?' pick':'')+'" draggable="true" tabindex="0" data-c="'+k+'">'+esc(c)+'</div>'});h+='</div>'}
+  $('#qbox').innerHTML=h;wire();pal();
+  $('#flag').textContent=F[cur]?'Remove flag':'Flag for review';
+  $('#prev').disabled=cur===0;$('#next').disabled=cur===N-1;
+}
+function wire(){
+  const q=P[cur];
+  const act=el=>{
+    const k=+el.dataset.k;
+    if(q.t==='mc'){A[cur]=k;draw()}
+    else if(q.t==='ms'){const s=A[cur];const i=s.indexOf(k);if(i>=0)s.splice(i,1);else s.push(k);draw()}
+  };
+  document.querySelectorAll('.opt').forEach(el=>{el.onclick=()=>act(el);el.onkeydown=e=>{if(e.key===' '||e.key==='Enter'){e.preventDefault();act(el)}}});
+  document.querySelectorAll('.yn input').forEach(el=>el.onchange=()=>{A[cur][+el.dataset.k]=el.dataset.v==='1';pal()});
+  if(q.t==='dd'){
+    const put=(z,c)=>{const a=A[cur];const old=a[z];const j=a.indexOf(c);if(j>=0)a[j]=null;a[z]=c;sel=null;draw()};
+    document.querySelectorAll('.chip').forEach(el=>{
+      const c=+el.dataset.c;
+      el.onclick=()=>{sel=sel===c?null:c;draw()};
+      el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();sel=sel===c?null:c;draw()}};
+      el.ondragstart=e=>{e.dataTransfer.setData('text/plain',String(c))};
+    });
+    document.querySelectorAll('.zone').forEach(el=>{
+      const z=+el.dataset.z;
+      const go=()=>{if(sel!==null)put(z,sel);else if(A[cur][z]!==null){A[cur][z]=null;draw()}};
+      el.onclick=go;el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}};
+      el.ondragover=e=>{e.preventDefault();el.classList.add('over')};
+      el.ondragleave=()=>el.classList.remove('over');
+      el.ondrop=e=>{e.preventDefault();const c=+e.dataTransfer.getData('text/plain');if(!isNaN(c))put(z,c)};
+    });
+    const pool=$('#pool');
+    pool.ondragover=e=>e.preventDefault();
+    pool.ondrop=e=>{e.preventDefault();const c=+e.dataTransfer.getData('text/plain');const a=A[cur];const j=a.indexOf(c);if(j>=0){a[j]=null;draw()}};
+  }
+}
+function pal(){
+  $('#pal').innerHTML=P.map((q,i)=>'<button class="'+(answered(i)?'done ':'')+(F[i]?'flag ':'')+(i===cur?'cur':'')+'" data-i="'+i+'" aria-label="Question '+(i+1)+'">'+(i+1)+'</button>').join('');
+  document.querySelectorAll('#pal button').forEach(b=>b.onclick=()=>{cur=+b.dataset.i;sel=null;draw();window.scrollTo(0,0)});
+}
+$('#prev').onclick=()=>{if(cur>0){cur--;sel=null;draw()}};
+$('#next').onclick=()=>{if(cur<N-1){cur++;sel=null;draw()}};
+$('#flag').onclick=()=>{F[cur]=!F[cur];draw()};
+$('#startBtn').onclick=start;
+$('#subTop').onclick=()=>submit(false);
+
+/* ---------- grading ---------- */
+function grade(q,a){
+  if(q.t==='mc')return a!==null&&q.o2[a].i===q.a?1:0;
+  if(q.t==='ms'){const g=a.map(k=>q.o2[k].i).sort().join();return g===q.a.slice().sort().join()?1:0}
+  if(q.t==='yn')return a.reduce((s,v,k)=>s+(v===q.s2[k][1]?1:0),0)/a.length;
+  return a.reduce((s,v,k)=>s+(v!==null&&q.pool[v]===q.p[k][1]?1:0),0)/a.length;
+}
+function submit(auto){
+  if(done)return;
+  const un=P.filter((q,i)=>!answered(i)).length;
+  if(!auto&&!confirm(un?('You have '+un+' unanswered question(s). Submit anyway?'):'Submit your exam for scoring?'))return;
+  done=true;clearInterval(timer);
+  const sc=P.map((q,i)=>grade(q,A[i]));
+  const total=sc.reduce((a,b)=>a+b,0);
+  const score=Math.round(total/N*1000),pass=score>=700;
+  const dom={};P.forEach((q,i)=>{const d=dom[q.d]||(dom[q.d]={s:0,n:0});d.s+=sc[i];d.n++});
+  const names={'1.1':'1.1 Responsible AI','1.2':'1.2 Model components','1.3':'1.3 AI workloads','2.1':'2.1 Generative AI and agents','2.2':'2.2 Text and speech','2.3':'2.3 Vision and image generation','2.4':'2.4 Information extraction'};
+  let h='<div class="box"><h2 style="margin-top:0">Exam results</h2><div class="score '+(pass?'pass':'fail')+'">'+score+' / 1000</div><p><b>'+(pass?'Pass':'Not yet passing')+'</b> (passing score 700). Correct: '+total.toFixed(1)+' of '+N+' points'+(auto?'. Time expired and the exam was submitted automatically.':'.')+'</p><h3>Performance by skill area</h3><div class="dm">';
+  Object.keys(dom).sort().forEach(k=>{const p=Math.round(dom[k].s/dom[k].n*100);h+='<div><span style="background:none">'+names[k]+'</span><span><i style="width:'+p+'%"></i></span><b>'+p+'%</b></div>'});
+  h+='</div><p class="nav"><button class="btn" id="again">Retake with a new random set</button><button class="btn alt" id="onlyWrong">Show only missed items</button><button class="btn alt" id="allq">Show all items</button><button class="btn alt" id="back3">Back to reviewer</button></p></div><div id="rvl"></div>';
+  $('#run').style.display='none';$('#res').innerHTML=h;$('#res').style.display='block';
+  $('#again').onclick=()=>{$('#res').style.display='none';start()};
+  $('#back3').onclick=()=>showView('r');
+  const show=w=>{$('#rvl').innerHTML=P.map((q,i)=>(w&&sc[i]===1)?'':review(q,A[i],sc[i],i)).join('')||'<div class="box">Every item was answered correctly.</div>'};
+  $('#onlyWrong').onclick=()=>show(true);$('#allq').onclick=()=>show(false);show(false);
+  window.scrollTo(0,0);
+}
+function review(q,a,s,i){
+  let h='<div class="rv '+(s===1?'c':s===0?'w':'p')+'"><b>Question '+(i+1)+'</b> <span class="meta">(skill area '+q.d+') · '+(s===1?'Correct':s===0?'Incorrect':'Partially correct')+'</span><p>'+esc(q.q)+'</p>';
+  if(q.t==='mc'||q.t==='ms'){
+    q.o2.forEach((o,k)=>{const right=q.t==='mc'?o.i===q.a:q.a.includes(o.i);const mine=q.t==='mc'?a===k:a.includes(k);
+      h+='<div class="opt '+(right?'ok':mine?'no':'')+'"><span class="mk">'+(mine?'●':'')+'</span><span>'+esc(o.t)+(right?' — correct answer':'')+(mine&&!right?' — your answer':'')+(mine&&right?' — your answer':'')+'</span></div>'});
+  }else if(q.t==='yn'){
+    h+='<div class="tw"><table><tr><th>Statement</th><th>Your answer</th><th>Correct</th></tr>';
+    q.s2.forEach((r,k)=>{const v=a[k];const ok=v===r[1];h+='<tr><td>'+esc(r[0])+'</td><td style="color:'+(ok?'var(--ok)':'var(--bad)')+'">'+(v===null?'No answer':v?'Yes':'No')+'</td><td>'+(r[1]?'Yes':'No')+'</td></tr>'});h+='</table></div>';
+  }else{
+    h+='<div class="tw"><table><tr><th>Item</th><th>Your answer</th><th>Correct</th></tr>';
+    q.p.forEach((r,k)=>{const v=a[k];const ok=v!==null&&q.pool[v]===r[1];h+='<tr><td>'+esc(r[0])+'</td><td style="color:'+(ok?'var(--ok)':'var(--bad)')+'">'+(v===null?'No answer':esc(q.pool[v]))+'</td><td>'+esc(r[1])+'</td></tr>'});h+='</table></div>';
+  }
+  return h+'<div class="expl"><b>Explanation:</b> '+esc(q.e)+'</div></div>';
+}
+</script>
+</body>
+</html>
