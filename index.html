@@ -37,6 +37,8 @@ code{background:#eaf0f7;padding:1px 5px;border-radius:3px;font-size:.9em}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
 .mini{border:1px solid var(--line);padding:12px 14px;border-radius:var(--r);background:#fcfdff}
 .mini h4{margin-top:0}
+pre{background:#0f1c2e;color:#e6eef8;padding:14px 16px;border-radius:var(--r);overflow-x:auto;font:.86rem/1.55 Consolas,"Courier New",monospace;margin:10px 0}
+.beyond{display:inline-block;background:var(--warnbg);color:var(--warn);border:1px solid #e3c27a;font:600 .72rem/1.5 "Segoe UI",system-ui,sans-serif;padding:0 7px;border-radius:3px;margin-left:8px;vertical-align:middle}
 /* side menu */
 #tg{position:fixed;top:14px;right:14px;z-index:60;background:var(--az);color:#fff;border:0;border-radius:var(--r);padding:10px 14px;font:600 .95rem inherit;font-family:inherit;cursor:pointer;box-shadow:0 2px 8px #0003}
 #tg:focus-visible,button:focus-visible,.opt:focus-visible,.zone:focus-visible,.chip:focus-visible,a:focus-visible{outline:3px solid #f2a900;outline-offset:2px}
@@ -123,19 +125,22 @@ input.pw{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radi
 
 <section class="card" id="overview">
   <h2>Exam overview</h2>
-  <p>AI-901 validates foundational knowledge of AI concepts and of the Microsoft Foundry tools used to build AI solutions. It is a fundamentals-level exam: no coding is required, but you must recognize which service, model type, setting or principle fits a described scenario.</p>
+  <p>AI-901 replaces AI-900 as the Azure AI Fundamentals exam. It validates beginner-level skills in AI concepts and in building lightweight AI solutions with Microsoft Foundry. More than half the exam is about <i>implementing</i> solutions, so you must be able to recognize and read short Python snippets, not only recall definitions.</p>
   <div class="tw"><table>
-    <tr><th>Objective</th><th>Skill area</th></tr>
-    <tr><td rowspan="3">1. Describe AI concepts</td><td>1.1 Describe principles of responsible AI</td></tr>
-    <tr><td>1.2 Identify AI model components and configurations</td></tr>
-    <tr><td>1.3 Identify AI workloads</td></tr>
-    <tr><td rowspan="4">2. Implement AI solutions by using Foundry</td><td>2.1 Implement generative AI apps and agents by using Foundry</td></tr>
-    <tr><td>2.2 Implement AI solutions for text and speech by using Foundry</td></tr>
-    <tr><td>2.3 Implement AI solutions with computer vision and image generation by using Foundry</td></tr>
-    <tr><td>2.4 Implement AI solutions for information extraction by using Foundry</td></tr>
+    <tr><th>Domain</th><th>Weight</th><th>Skill areas</th></tr>
+    <tr><td><b>1. Identify AI concepts and capabilities</b></td><td>40–45%</td><td>1.1 Describe principles of responsible AI<br>1.2 Identify AI model components and configurations<br>1.3 Identify AI workloads</td></tr>
+    <tr><td><b>2. Implement AI solutions by using Microsoft Foundry</b></td><td>55–60%</td><td>2.1 Implement generative AI apps and agents by using Foundry<br>2.2 Implement AI solutions for text and speech by using Foundry<br>2.3 Implement AI solutions with computer vision and image-generation capabilities by using Foundry<br>2.4 Implement AI solutions for information extraction by using Foundry</td></tr>
   </table></div>
-  <div class="tip"><b>Format.</b> Expect multiple choice, select-multiple, yes/no statement sets, and drag-and-drop matching. Microsoft scores on a 1–1000 scale and a score of 700 is passing. Question counts, time and domain weightings change, so confirm them on the official AI-901 study guide on Microsoft Learn before test day.</div>
-  <div class="trap"><b>Naming note.</b> Microsoft renames services often. Azure AI Studio became Azure AI Foundry and is now Microsoft Foundry; "Azure AI Services" is now part of Foundry Tools; Cognitive Services is the older name. Learn the capability, because the exam may use either the current or the older name.</div>
+  <div class="def"><b>Verified.</b> This reviewer was checked on October 10, 2026 against Microsoft's official AI-901 study guide (skills measured as of April 15, 2026; the guide page was last updated July 13, 2026) and against current Microsoft Learn documentation for Content Understanding and the Foundry SDK.</div>
+  <h3>What the official guide says about the candidate and the exam</h3>
+  <ul>
+    <li>Candidates are at the start of an AI solution development career and need conceptual knowledge of AI solutions in Azure, <b>Python syntax and programming techniques</b>, and familiarity with Azure resources, REST APIs, SDKs and CLIs.</li>
+    <li>Most questions cover generally available (GA) features; preview features can appear if they are commonly used.</li>
+    <li>A score of 700 or greater is required to pass. The study guide does not state a fixed question count or time limit.</li>
+    <li>Microsoft offers a free practice assessment on AI Skills Navigator (sign-in required). Question types in this tool's practice exam mirror the common formats: multiple choice, select multiple, yes/no sets and drag-and-drop.</li>
+  </ul>
+  <div class="trap"><b>Naming note.</b> Names change often: Azure AI Studio became Azure AI Foundry and is now <b>Microsoft Foundry</b>; Azure AI Services became <b>Foundry Tools</b>; Azure Document Intelligence is now described as part of <b>Azure Content Understanding</b>. Learn the capability, since questions may use the current or an older name.</div>
+  <div class="tip"><b>Reading the badges.</b> Topics marked <span class="beyond">Beyond the outline</span> are useful background but are not listed in the April 2026 skills measured, so spend less time on them.</div>
 </section>
 
 <section class="card" id="s11">
@@ -188,7 +193,8 @@ input.pw{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radi
     <li><b>Features</b> are the input variables (x); the <b>label</b> is the value to predict (y). <b>Training</b> fits a model to data; <b>inference</b> uses the trained model on new data.</li>
     <li>Data is split into <b>training</b>, <b>validation</b> and <b>test</b> sets. <b>Overfitting</b> = excellent on training data, poor on new data. <b>Underfitting</b> = poor everywhere.</li>
   </ul>
-  <h3>Machine learning types</h3>
+  <div class="tip"><b>Outline focus.</b> The official 1.2 skills are: describe how generative AI models work, identify an appropriate model based on capabilities, and identify appropriate deployment options and configuration parameters. Classic machine learning below is general background.</div>
+  <h3>Machine learning types <span class="beyond">Beyond the outline</span></h3>
   <div class="tw"><table>
     <tr><th>Type</th><th>Learning</th><th>Predicts</th><th>Example</th></tr>
     <tr><td>Regression</td><td>Supervised</td><td>A number</td><td>House price, delivery time, sales volume</td></tr>
@@ -197,7 +203,7 @@ input.pw{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radi
     <tr><td>Clustering</td><td>Unsupervised (no labels)</td><td>Groups of similar items</td><td>Customer segmentation</td></tr>
     <tr><td>Anomaly detection</td><td>Often unsupervised</td><td>Unusual points or patterns</td><td>Fraud, sensor failure</td></tr>
   </table></div>
-  <h3>Evaluation metrics</h3>
+  <h3>Evaluation metrics <span class="beyond">Beyond the outline</span></h3>
   <div class="grid2">
     <div class="mini"><h4>Regression</h4><ul><li><b>MAE</b>: mean absolute error</li><li><b>MSE / RMSE</b>: squared error; RMSE is in the label's units</li><li><b>R²</b>: share of variance explained (closer to 1 is better)</li></ul></div>
     <div class="mini"><h4>Classification</h4><ul><li><b>Accuracy</b> = correct / total</li><li><b>Precision</b> = TP / (TP + FP)</li><li><b>Recall</b> = TP / (TP + FN)</li><li><b>F1</b>: balance of precision and recall</li><li><b>AUC</b>: separation across thresholds</li><li><b>Confusion matrix</b>: TP, FP, TN, FN</li></ul></div>
@@ -232,6 +238,24 @@ input.pw{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radi
     <li><b>Fine-tuning</b>: further train a model on labeled examples to change style, format or specialist behavior. Costlier and slower; it does not reliably add new facts.</li>
     <li>Order of effort: prompt engineering, then RAG, then fine-tuning.</li>
   </ul>
+  <h3>Choosing a model by capability</h3>
+  <div class="tw"><table>
+    <tr><th>Need</th><th>Look for</th></tr>
+    <tr><td>Chat, drafting, summarizing, code</td><td>Chat/completion model; larger models for harder tasks, smaller ones for speed and cost</td></tr>
+    <tr><td>Complex multi-step reasoning</td><td>Reasoning model (slower and uses extra thinking tokens)</td></tr>
+    <tr><td>Images or audio in the prompt</td><td>Multimodal model that supports those input types</td></tr>
+    <tr><td>Create pictures</td><td>Image generation model</td></tr>
+    <tr><td>Semantic search and RAG</td><td>Embedding model</td></tr>
+    <tr><td>Agents using tools</td><td>A model that supports tool/function calling</td></tr>
+  </table></div>
+  <p>Compare candidates in the Foundry <b>model catalog</b> using capabilities (modalities, context window, tool support), quality benchmarks, latency, cost, region availability and licensing.</p>
+  <h3>Deployment options</h3>
+  <div class="tw"><table>
+    <tr><th>Option</th><th>When to use</th></tr>
+    <tr><td>Standard / Global Standard / Data Zone</td><td>Pay per token; flexible, good for variable or development workloads. Global and data-zone variants differ in where processing may occur.</td></tr>
+    <tr><td>Provisioned throughput</td><td>Reserved capacity for steady, high-volume traffic with predictable latency.</td></tr>
+    <tr><td>Batch</td><td>Large offline jobs that are not time-sensitive, at lower cost.</td></tr>
+  </table></div>
   <h3>Deployment and access</h3>
   <ul>
     <li>In Foundry you choose a model from the <b>model catalog</b> and create a <b>deployment</b> (with a deployment name). Apps call the resource <b>endpoint</b> with that deployment name.</li>
@@ -242,6 +266,7 @@ input.pw{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radi
 
 <section class="card" id="s13">
   <h2>1.3 Identify AI workloads</h2>
+  <div class="tip"><b>Outline focus.</b> Scenarios for generative and agentic AI, text analysis (keyword extraction, entity detection, sentiment, summarization), speech recognition and synthesis, computer vision and image generation, and extracting information from text, images, audio and video.</div>
   <div class="tw"><table>
     <tr><th>Workload</th><th>What it does</th><th>Scenarios</th><th>Services</th></tr>
     <tr><td><b>Generative AI</b></td><td>Creates new text, code, images, audio</td><td>Copilots, summarizing, drafting, Q&amp;A over company data, image creation</td><td>Foundry Models (GPT, image models), Foundry Agent Service</td></tr>
@@ -251,8 +276,8 @@ input.pw{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radi
     <tr><td><b>Speech</b></td><td>Converts speech to text and text to speech; translates speech</td><td>Transcription, voice assistants, captions, audiobooks</td><td>Azure AI Speech</td></tr>
     <tr><td><b>Information extraction</b></td><td>Pulls structured data from unstructured content</td><td>Invoices, receipts, forms, contracts, multimodal files</td><td>Document Intelligence, Content Understanding</td></tr>
     <tr><td><b>Knowledge mining</b></td><td>Indexes and enriches large content stores for search</td><td>Searching millions of PDFs, images and records</td><td>Azure AI Search (with AI enrichment)</td></tr>
-    <tr><td><b>Anomaly detection</b></td><td>Finds unusual behavior</td><td>Fraud, equipment faults, spikes in telemetry</td><td>Azure Machine Learning, anomaly detection models</td></tr>
-    <tr><td><b>Forecasting / predictive ML</b></td><td>Predicts numbers or categories from historical data</td><td>Demand forecasting, churn, price prediction</td><td>Azure Machine Learning</td></tr>
+    <tr><td><b>Anomaly detection</b> <span class="beyond">Beyond the outline</span></td><td>Finds unusual behavior</td><td>Fraud, equipment faults, spikes in telemetry</td><td>Azure Machine Learning, anomaly detection models</td></tr>
+    <tr><td><b>Forecasting / predictive ML</b> <span class="beyond">Beyond the outline</span></td><td>Predicts numbers or categories from historical data</td><td>Demand forecasting, churn, price prediction</td><td>Azure Machine Learning</td></tr>
   </table></div>
   <h3>Computer vision sub-workloads</h3>
   <ul>
@@ -263,6 +288,16 @@ input.pw{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radi
   </ul>
   <h3>Language sub-workloads</h3>
   <ul><li>Entity recognition, key phrase extraction, language detection, sentiment analysis, summarization, translation, conversational language understanding (intent and entities), question answering.</li></ul>
+  <h3>Text analysis techniques</h3>
+  <div class="tw"><table>
+    <tr><th>Technique</th><th>Result</th></tr>
+    <tr><td>Keyword (key phrase) extraction</td><td>Main talking points</td></tr>
+    <tr><td>Entity detection</td><td>People, places, organizations, dates and other categories</td></tr>
+    <tr><td>Sentiment analysis</td><td>Positive, neutral, negative or mixed, with confidence scores</td></tr>
+    <tr><td>Summarization</td><td>A shorter version that keeps the key information</td></tr>
+  </table></div>
+  <h3>Extracting information by content type</h3>
+  <ul><li><b>Text</b>: entities, PII, key phrases (Language) or prompts to a generative model. <b>Images</b>: OCR and visual description. <b>Documents and forms</b>: fields, tables, layout. <b>Audio</b>: transcripts, summaries, sentiment. <b>Video</b>: scene segments, transcripts, descriptions. Azure Content Understanding covers all four modalities with one analyzer-based approach.</li></ul>
   <div class="tip"><b>Decision shortcut.</b> Ask what the <i>input</i> is (image, audio, text, form, mixed file) and what the <i>output</i> is (a label, text, structured fields, new content). That nearly always identifies the workload.</div>
 </section>
 
@@ -315,6 +350,40 @@ input.pw{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radi
     <li><b>Observability</b>: tracing shows model calls, tool calls and latency for debugging. <b>Evaluations</b> measure quality (groundedness, relevance, coherence, fluency) and safety.</li>
     <li><b>Governance</b>: apply content filters, least-privilege access to tools, and human approval for high-impact actions.</li>
   </ul>
+  <h3>Writing effective system and user prompts</h3>
+  <ul>
+    <li><b>System prompt</b>: sets role, tone, rules, allowed topics, output format and what to do when unsure (for example "answer only from the provided context"). It applies to the whole conversation.</li>
+    <li><b>User prompt</b>: the specific request for this turn.</li>
+    <li>Good prompts are specific about the task, give needed context, state the output format and length, add 1–3 examples (few-shot) when format matters, separate instructions from data with clear delimiters, and are refined by testing and iterating.</li>
+    <li>Prompts guide behavior but are not a security boundary; combine with content filters and grounding.</li>
+  </ul>
+  <h3>Python you should be able to read</h3>
+  <p><b>Chat client with the Foundry SDK</b> (install <code>azure-ai-projects</code> and <code>azure-identity</code>; sign in with <code>az login</code> for local development):</p>
+<pre>from azure.ai.projects import AIProjectClient
+from azure.identity import DefaultAzureCredential
+
+project = AIProjectClient(endpoint=ENDPOINT, credential=DefaultAzureCredential())
+client = project.get_openai_client()          # OpenAI-compatible client
+resp = client.responses.create(
+    model="my-gpt",                           # your DEPLOYMENT name
+    input="Explain RAG in one sentence.")
+print(resp.output_text)</pre>
+  <ul><li>The project <b>endpoint</b> plus <b>Entra ID credential</b> identify and authorize the app. The <code>model</code> value is the deployment name. The same client also supports the Chat Completions API (<code>client.chat.completions.create</code> with a <code>messages</code> list of role/content dictionaries).</li></ul>
+  <p><b>Single agent: create it, then chat with it</b>:</p>
+<pre>agent = project.agents.create_version(
+    agent_name="hr-helper",
+    definition=PromptAgentDefinition(
+        model="my-gpt",
+        instructions="Answer HR policy questions politely."))
+
+openai = project.get_openai_client()
+conversation = openai.conversations.create()   # keeps multi-turn context
+reply = openai.responses.create(
+    conversation=conversation.id,
+    extra_body={"agent": {"name": agent.name, "type": "agent_reference"}},
+    input="How many vacation days do new hires get?")
+print(reply.output_text)</pre>
+  <ul><li>Create and test the agent in the Foundry <b>agent playground</b> first, then write a small client that references the agent by name. A conversation preserves context across turns. Not every model supports agent tools, so choose a tool-capable model.</li></ul>
   <div class="trap"><b>Trap.</b> RAG does <i>not</i> retrain the model; fine-tuning changes the model; prompt engineering changes only the input. Agents differ from plain chat because they can plan and act through tools.</div>
 </section>
 
@@ -335,7 +404,8 @@ input.pw{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radi
     <tr><td>Custom text classification / custom NER</td><td>Train on your labels and entity types.</td></tr>
   </table></div>
   <p>Generative models in Foundry can also perform these tasks through prompting; pre-built Language features are simpler, cheaper and deterministic for well-defined tasks.</p>
-  <h3>Azure AI Translator</h3>
+  <div class="tip"><b>Outline focus.</b> Build a lightweight app that does text analysis, respond to spoken prompts with a deployed multimodal model, and build a lightweight app with Azure Speech in Foundry Tools. CLU, custom question answering and Translator are background.</div>
+  <h3>Azure AI Translator <span class="beyond">Beyond the outline</span></h3>
   <ul>
     <li>Text translation across 100+ languages (with auto language detection, transliteration, dictionary).</li>
     <li>Document translation preserves layout and format. Custom Translator adapts to domain vocabulary.</li>
@@ -350,12 +420,51 @@ input.pw{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radi
     <tr><td>Pronunciation assessment</td><td>Scores learner pronunciation.</td></tr>
     <tr><td>Voice Live / real-time audio models</td><td>Low-latency speech-in, speech-out conversations with generative models for voice agents.</td></tr>
   </table></div>
+  <h3>Respond to spoken prompts with a multimodal model</h3>
+  <ul>
+    <li>Deploy a model that accepts <b>audio input</b> (and optionally produces audio output). The app records or loads speech, sends the audio as part of the user message, and receives a text (or spoken) answer in one step, without a separate transcription call.</li>
+    <li>Alternative pipeline: Speech to text → chat model → text to speech. Choose the single multimodal call for simplicity and low latency; choose the pipeline for fine control, custom vocabularies or fixed voices.</li>
+  </ul>
+  <h3>Python you should be able to read</h3>
+<pre># Text analysis (Azure AI Language)
+from azure.ai.textanalytics import TextAnalyticsClient
+from azure.core.credentials import AzureKeyCredential
+
+client = TextAnalyticsClient(endpoint=ENDPOINT, credential=AzureKeyCredential(KEY))
+docs = ["The staff were friendly but the room was dirty."]
+print(client.analyze_sentiment(docs)[0].sentiment)       # positive / neutral / negative / mixed
+print(client.extract_key_phrases(docs)[0].key_phrases)    # main talking points
+print([e.text for e in client.recognize_entities(docs)[0].entities])</pre>
+<pre># Speech to text and text to speech (Azure Speech SDK)
+import azure.cognitiveservices.speech as speechsdk
+
+cfg = speechsdk.SpeechConfig(subscription=KEY, region=REGION)
+recognizer = speechsdk.SpeechRecognizer(speech_config=cfg)   # default microphone
+print(recognizer.recognize_once_async().get().text)           # one utterance
+
+synth = speechsdk.SpeechSynthesizer(speech_config=cfg)        # default speaker
+synth.speak_text_async("Welcome to the demo.").get()</pre>
   <div class="tip"><b>Typical solution.</b> Voice assistant = Speech to text (hear) → Language model or CLU (understand and decide) → Text to speech (speak).</div>
   <div class="trap"><b>Trap.</b> Language service analyzes <i>written text</i>; Speech handles <i>audio</i>; Translator handles <i>translation of text/documents</i>; Speech translation handles <i>spoken</i> translation.</div>
 </section>
 
 <section class="card" id="s23">
   <h2>2.3 Implement AI solutions with computer vision and image generation by using Foundry</h2>
+  <div class="tip"><b>Outline focus.</b> Interpret visual input in prompts by using a deployed multimodal model, create new visuals with generative models, and build a lightweight app with vision capabilities.</div>
+  <h3>Visual input to a multimodal model</h3>
+<pre>resp = client.responses.create(
+    model="my-gpt",
+    input=[{"role": "user", "content": [
+        {"type": "input_text",  "text": "What is in this picture?"},
+        {"type": "input_image", "image_url": "https://example.com/cat.jpg"}]}])
+print(resp.output_text)</pre>
+  <ul><li>One user message holds several <b>content parts</b>: text plus an image URL or a base64 data URL for local files. Use it for captioning, reading charts, comparing images, checking compliance photos and visual Q&amp;A.</li></ul>
+  <h3>Generating images</h3>
+<pre>img = client.images.generate(
+    model="my-image-model",                  # image-generation DEPLOYMENT name
+    prompt="A watercolor lighthouse at dawn, soft light, wide shot",
+    size="1024x1024")</pre>
+  <ul><li>The result is returned as an image (URL or base64 depending on the model); save or display it in your app. Content filters apply to prompts and outputs.</li></ul>
   <h3>Azure AI Vision</h3>
   <div class="tw"><table>
     <tr><th>Feature</th><th>Description</th></tr>
@@ -365,7 +474,7 @@ input.pw{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radi
     <tr><td>Multimodal embeddings</td><td>Vectors for image-to-text and image-to-image search.</td></tr>
     <tr><td>Video / spatial analysis</td><td>Analyze people movement and occupancy in video feeds; <b>Azure Video Indexer</b> extracts transcripts, faces, topics, scenes and labels from video.</td></tr>
   </table></div>
-  <h3>Face</h3>
+  <h3>Face <span class="beyond">Beyond the outline</span></h3>
   <ul>
     <li>Detection (locations and attributes), verification (same person?), identification (who is this?), similarity, grouping, liveness detection.</li>
     <li>Identification and verification are <b>Limited Access</b> features and require approval, reflecting responsible-AI concerns (privacy, fairness, consent).</li>
@@ -386,36 +495,63 @@ input.pw{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radi
 
 <section class="card" id="s24">
   <h2>2.4 Implement AI solutions for information extraction by using Foundry</h2>
-  <h3>Azure AI Document Intelligence</h3>
+  <div class="tip"><b>Outline focus.</b> Extract information from documents and forms, from images, and from audio and video by using Azure Content Understanding in Foundry Tools, and build a lightweight application with extraction capabilities.</div>
+  <h3>What Content Understanding is</h3>
+  <p><b>Azure Content Understanding in Foundry Tools</b> uses generative AI to turn documents, images, audio and video into a user-defined output format. It is part of the Microsoft Foundry resource. Output is either <b>Markdown</b> (good for search and RAG) or <b>structured JSON</b> that follows your field schema (good for automation and analytics).</p>
+  <h3>Pipeline components</h3>
   <div class="tw"><table>
-    <tr><th>Model type</th><th>Details</th></tr>
-    <tr><td>Read</td><td>Extracts printed and handwritten text, lines, words and languages.</td></tr>
-    <tr><td>Layout</td><td>Text plus tables, selection marks (checkboxes), paragraphs, headings and structure; can output Markdown that is ideal for RAG chunking.</td></tr>
-    <tr><td>Prebuilt models</td><td>Invoice, receipt, ID document, business card, W-2 and other tax forms, health insurance card, contracts, and more. Return named fields.</td></tr>
-    <tr><td>Custom models</td><td>Train on your own forms. <b>Template</b> models suit fixed layouts; <b>neural</b> models handle varied layouts. <b>Composed</b> models route a document to the right custom model.</td></tr>
+    <tr><th>Component</th><th>Role</th></tr>
+    <tr><td>Inputs</td><td>Documents, images, audio, video.</td></tr>
+    <tr><td><b>Analyzer</b></td><td>The core object: defines content extraction settings, the field schema and the model deployments. Prebuilt or custom.</td></tr>
+    <tr><td>Content extraction</td><td>Normalizes content: OCR text, selection marks, barcodes, formulas, layout (paragraphs, sections, tables); speech transcripts and key visual elements for audio and video.</td></tr>
+    <tr><td>Segmentation</td><td>Splits documents or video into logical parts (for example by document type or by scene).</td></tr>
+    <tr><td>Field extraction</td><td>Produces key-value fields from your schema using three methods (below).</td></tr>
+    <tr><td>Confidence and grounding</td><td>Confidence is a 0 to 1 estimate per field; grounding points to where in the source a value came from, so people can verify it.</td></tr>
+    <tr><td>Foundry models</td><td>You bring deployments of supported generative (and embedding) models that power field extraction and figure analysis.</td></tr>
   </table></div>
+  <h4>Field methods</h4>
   <ul>
-    <li>Output is JSON with extracted <b>fields</b>, <b>key-value pairs</b>, <b>tables</b>, <b>bounding polygons</b> and a <b>confidence score</b> for each value. Use confidence thresholds to decide when to send items for human review.</li>
-    <li>Use prebuilt first; train custom only when no prebuilt model fits.</li>
+    <li><b>Extract</b>: read values as they appear (documents only), such as dates and line items.</li>
+    <li><b>Classify</b>: choose from predefined categories, such as call sentiment or document type.</li>
+    <li><b>Generate</b>: create values freely, such as a summary of a call or a description of a scene.</li>
   </ul>
-  <h3>Azure AI Content Understanding</h3>
+  <h3>Modalities</h3>
+  <div class="tw"><table>
+    <tr><th>Input</th><th>Typical outputs</th></tr>
+    <tr><td>Documents and forms</td><td>Text, layout, tables, figures (with descriptions), handwriting and annotations, named fields, chunked Markdown.</td></tr>
+    <tr><td>Images</td><td>Descriptions and fields about visual content.</td></tr>
+    <tr><td>Audio</td><td>Transcripts, conversation summaries, topics, sentiment (for example call-center analytics).</td></tr>
+    <tr><td>Video</td><td>Segments (scenes or topics), transcripts, per-segment descriptions and summaries.</td></tr>
+  </table></div>
+  <h3>Prebuilt analyzers to recognize</h3>
+  <div class="tw"><table>
+    <tr><th>Category</th><th>Examples</th></tr>
+    <tr><td>Content extraction (no LLM needed)</td><td><code>prebuilt-read</code> (basic OCR), <code>prebuilt-layout</code> (adds structure and tables), <code>prebuilt-digitalParse</code> (digital files)</td></tr>
+    <tr><td>Base analyzers (parents for custom ones)</td><td><code>prebuilt-document</code>, <code>prebuilt-image</code>, <code>prebuilt-audio</code>, <code>prebuilt-video</code></td></tr>
+    <tr><td>RAG analyzers</td><td><code>prebuilt-documentSearch</code>, <code>prebuilt-imageSearch</code>, <code>prebuilt-audioSearch</code>, <code>prebuilt-videoSearch</code>: Markdown with layout, figure descriptions, summaries and embedding-ready chunks</td></tr>
+    <tr><td>Domain-specific</td><td><code>prebuilt-invoice</code>, <code>prebuilt-receipt</code>, <code>prebuilt-idDocument</code>, <code>prebuilt-contract</code>, tax forms such as <code>prebuilt-tax.us.w2</code>, mortgage and financial documents</td></tr>
+    <tr><td>Audio scenario</td><td><code>prebuilt-callCenter</code>: topics, sentiment and key insights from call recordings</td></tr>
+  </table></div>
+  <h3>Using the service</h3>
+<pre>POST /analyzers/prebuilt-invoice:analyze      # run an analyzer on your content
+GET  /analyzers/prebuilt-invoice              # read its definition and schema
+PUT  /analyzers/my-invoice                    # create a custom analyzer from an edited copy</pre>
   <ul>
-    <li>Multimodal service that turns <b>documents, images, audio and video</b> into structured output.</li>
-    <li>You define an <b>analyzer</b> with a <b>field schema</b> (what to extract); it performs content extraction (text, transcripts, layout) and generative field extraction. Prebuilt analyzers exist for common cases.</li>
-    <li>Use when inputs are mixed media or when fields need reasoning or summarization, for example extracting call-center insights from audio or key moments from video.</li>
+    <li>Analysis is asynchronous: you submit the content, then poll for the result (the SDKs wrap this in a long-running operation).</li>
+    <li>Start with a <b>prebuilt</b> analyzer; if fields differ, copy it and edit the schema, or build a <b>custom analyzer</b> from a base analyzer. Content Understanding Studio helps label data and improve custom analyzers.</li>
+    <li>Classification can route each document to the right analyzer (for example composed analyzers for tax, procurement and mortgage packets).</li>
+    <li>Use confidence scores for straight-through processing, sending low-confidence values to human review. Guardrails on the model deployment can block or annotate harmful content, so review warnings before automating.</li>
+    <li>Use the GA API version for production; preview versions add early features such as agentic mode.</li>
   </ul>
-  <h3>Azure AI Search with AI enrichment (knowledge mining)</h3>
+  <h4>Build a lightweight extraction app</h4>
+  <ol><li>Create or use a Foundry resource and deploy the required models.</li><li>Choose or create an analyzer (test it in the Foundry portal or Content Understanding Studio).</li><li>In your app, send the file or URL to the analyze operation with the analyzer ID.</li><li>Wait for completion, then read the Markdown or the JSON fields, confidence and grounding.</li><li>Validate and store results; route low-confidence items for review.</li></ol>
+  <h3>Related services</h3>
   <ul>
-    <li>Components: <b>data source</b> → <b>indexer</b> → <b>skillset</b> (enrichment pipeline) → <b>index</b>. Optional <b>knowledge store</b> saves enriched data to storage for analytics.</li>
-    <li>Built-in skills: OCR, image analysis, key phrases, entity recognition, language detection, translation, PII, text split. <b>Custom skills</b> call your own API or model.</li>
-    <li>Query with full-text, vector, hybrid and semantic ranking.</li>
+    <li><b>Azure Document Intelligence</b>: now described as part of Content Understanding; deterministic extraction (text, key-value pairs, tables) from structured and templated documents.</li>
+    <li><b>Azure AI Language</b>: entities, PII and key phrases from plain text. <b>Azure AI Search</b>: indexes enriched content for retrieval; Content Understanding feeds it for RAG.</li>
+    <li><b>LLM structured outputs</b> (JSON schema) can also constrain a model's response, but validate the results.</li>
   </ul>
-  <h3>Other extraction options</h3>
-  <ul>
-    <li><b>Azure AI Language</b> for entities, PII and key phrases from plain text.</li>
-    <li><b>LLM-based extraction</b> with <b>structured outputs</b> (JSON schema) forces the model to return valid, schema-conforming JSON, useful for custom fields. Validate results, because models can still err.</li>
-  </ul>
-  <div class="tp trap"><b>Choosing quickly.</b> Standard form (invoice, receipt, ID) → Document Intelligence prebuilt. Unique forms → custom model. Audio/video/mixed → Content Understanding. Search over huge archives → AI Search with skillset. Just text entities/PII → Language.</div>
+  <div class="trap"><b>Choosing quickly.</b> Mixed media or reasoning over fields → Content Understanding. Just a standard form → a prebuilt domain analyzer. Plain text entities or PII → Language. Text only, no structure → <code>prebuilt-read</code>; structure and tables → <code>prebuilt-layout</code>.</div>
 </section>
 
 <section class="card" id="sheet">
@@ -432,11 +568,12 @@ input.pw{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radi
     <tr><td>Transcribe meetings; read text aloud</td><td>Speech to text; text to speech (SSML)</td></tr>
     <tr><td>Caption or tag photos; read text in photos</td><td>Azure AI Vision Image Analysis; OCR</td></tr>
     <tr><td>Find and locate products in shelf photos</td><td>Object detection (custom if needed)</td></tr>
-    <tr><td>Insights from video archives</td><td>Azure Video Indexer / Content Understanding</td></tr>
+    <tr><td>Insights from video archives</td><td>Content Understanding video analyzer (<code>prebuilt-videoSearch</code>)</td></tr>
     <tr><td>Create marketing images from a prompt</td><td>Image generation model</td></tr>
-    <tr><td>Pull totals and vendors from invoices</td><td>Document Intelligence prebuilt invoice</td></tr>
-    <tr><td>Structured data from audio, video and documents</td><td>Content Understanding</td></tr>
-    <tr><td>Predict a price; group customers; flag fraud</td><td>Regression; clustering; anomaly detection (Azure ML)</td></tr>
+    <tr><td>Pull totals and vendors from invoices</td><td>Content Understanding <code>prebuilt-invoice</code> (Document Intelligence capabilities)</td></tr>
+    <tr><td>Structured data from audio, video and documents</td><td>Content Understanding analyzers</td></tr>
+    <tr><td>Call recordings to topics and sentiment</td><td><code>prebuilt-callCenter</code></td></tr>
+    <tr><td>Predict a price; group customers; flag fraud <span class="beyond">Beyond the outline</span></td><td>Regression; clustering; anomaly detection (Azure ML)</td></tr>
   </table></div>
 </section>
 
@@ -453,8 +590,10 @@ input.pw{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radi
     <li><b>Clustering vs classification.</b> Clustering has no labels; classification does.</li>
     <li><b>Fine-tuning does not guarantee new knowledge.</b> Use RAG for changing facts.</li>
     <li><b>Function calling.</b> The model suggests the call; your application executes it.</li>
-    <li><b>OCR vs Document Intelligence.</b> OCR returns text; Document Intelligence returns text <i>and</i> structure and named fields.</li>
-    <li><b>Face features.</b> Identification and verification need Limited Access approval.</li>
+    <li><b>Read vs layout vs domain analyzers.</b> <code>prebuilt-read</code> returns text; <code>prebuilt-layout</code> adds structure and tables; domain analyzers such as <code>prebuilt-invoice</code> return named fields.</li>
+    <li><b>Extract vs classify vs generate.</b> Extract copies values from documents; classify picks a category; generate writes new values such as summaries.</li>
+    <li><b>Deployment name.</b> Code passes the deployment name as the model value, not the catalog model name.</li>
+    <li><b>Face features</b> (background): identification and verification need Limited Access approval.</li>
   </ul>
 </section>
 
@@ -463,7 +602,7 @@ input.pw{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radi
   <div class="tw"><table>
     <tr><th>Term</th><th>Definition</th></tr>
     <tr><td>Agent</td><td>Model plus instructions and tools that can plan and act.</td></tr>
-    <tr><td>Analyzer</td><td>Content Understanding configuration that defines what to extract.</td></tr>
+    <tr><td>Analyzer</td><td>Content Understanding object that defines extraction settings, the field schema and model deployments.</td></tr>
     <tr><td>Attention</td><td>Transformer mechanism weighing token relationships.</td></tr>
     <tr><td>Bounding box / polygon</td><td>Coordinates locating an object or text.</td></tr>
     <tr><td>Chunking</td><td>Splitting documents into pieces for embedding and retrieval.</td></tr>
@@ -484,7 +623,7 @@ input.pw{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radi
     <tr><td>Token</td><td>Unit of text processed by a language model.</td></tr>
     <tr><td>Vector index</td><td>Store enabling similarity search over embeddings.</td></tr>
   </table></div>
-  <p class="meta">This reviewer follows the published AI-901 skill areas. Product names and limits evolve, so verify against the current Microsoft Learn study guide and documentation before your exam.</p>
+  <p class="meta">Last verified October 10, 2026 against Microsoft’s AI-901 study guide (skills measured as of April 15, 2026). Microsoft updates exams and product names periodically, so check the study guide again shortly before your exam.</p>
 </section>
 </main>
 
@@ -504,7 +643,7 @@ input.pw{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radi
     <ul>
       <li><b>50 questions</b> are drawn at random from a bank of 100, so each attempt differs. Question order and answer order are shuffled and renumbered every time.</li>
       <li>Formats: multiple choice, select multiple, yes/no statement sets, and drag-and-drop matching.</li>
-      <li>Time limit: 60 minutes. Passing score: 700 of 1000. You can flag questions and move freely before submitting.</li>
+      <li>Practice timer: 60 minutes (set by this tool; the official study guide does not state a fixed question count or time). Passing score: 700 of 1000. You can flag questions and move freely before submitting.</li>
       <li>Drag-and-drop: drag a choice into a box, or tap a choice and then tap a box. Tap a filled box to return the choice.</li>
     </ul>
     <button class="btn" id="startBtn">Start exam</button>
@@ -551,6 +690,7 @@ const M=(d,q,o,a,e)=>({t:'mc',d,q,o,a,e});
 const S=(d,q,o,a,e)=>({t:'ms',d,q,o,a,e});
 const Y=(d,q,s,e)=>({t:'yn',d,q,s,e});
 const D=(d,q,p,e)=>({t:'dd',d,q,p,e});
+const C=(c,q)=>({...q,c});
 const BANK=[
 /* 1.1 Responsible AI */
 M('1.1','A loan-approval model approves noticeably fewer applications from one demographic group than from others with similar qualifications. Which responsible AI principle is violated?',['Fairness','Transparency','Inclusiveness','Accountability'],0,'Fairness requires similar outcomes for similarly situated groups.'),
@@ -569,35 +709,35 @@ S('1.1','Which TWO are layers at which generative AI harms are mitigated?',['Saf
 Y('1.1','Decide whether each statement about content safety is correct.',[['Content filters can be configured and attached to a model deployment.',true],['Azure AI Content Safety can help detect protected material in output.',true],['Content filtering guarantees that no harmful output will ever be produced.',false]],'No filter is perfect; layered defenses and oversight are needed.'),
 M('1.1','Which document describes a service\'s intended uses, capabilities and limitations to support transparency?',['Transparency note','Invoice','Service quota sheet','Pricing calculator'],0,'Microsoft publishes Transparency Notes for AI services.'),
 /* 1.2 Model components */
-M('1.2','Which type of machine learning predicts a numeric value such as the price of a house?',['Regression','Classification','Clustering','Anomaly detection'],0,'Regression predicts numbers.'),
-M('1.2','A retailer wants to group customers by similar behavior without predefined categories. Which technique fits?',['Clustering','Regression','Binary classification','Forecasting'],0,'Clustering is unsupervised grouping.'),
-M('1.2','A model decides whether an email is spam or not spam. What type of model is this?',['Binary classification','Regression','Clustering','Semantic segmentation'],0,'Two categories = binary classification.'),
-M('1.2','In supervised learning, what is the name of the column the model is trained to predict?',['Label','Feature','Token','Embedding'],0,'The label is the target (y); features are inputs (x).'),
-M('1.2','A model scores very high on training data but poorly on new data. What is this problem?',['Overfitting','Underfitting','Inference','Tokenization'],0,'Overfitting memorizes training data and generalizes poorly.'),
-M('1.2','Which metric measures the proportion of actual positive cases that the model correctly identified?',['Recall','Precision','RMSE','R-squared'],0,'Recall = TP / (TP + FN).'),
-S('1.2','Which TWO are evaluation metrics for regression models?',['Mean absolute error (MAE)','R-squared','Recall','F1 score'],[0,1],'MAE, MSE, RMSE and R² evaluate regression; recall and F1 are classification metrics.'),
+M('1.2','Which kind of model can accept an image together with a text question in the same prompt?',['A multimodal model','A regression model','A clustering model','A speech synthesis voice'],0,'Multimodal models accept more than one input type, such as text and images.'),
+M('1.2','An app has steady, high-volume traffic and needs predictable latency. Which deployment option fits best?',['Provisioned throughput','A lower temperature setting','A smaller context window','Batch transcription'],0,'Provisioned throughput reserves model capacity for predictable performance.'),
+M('1.2','How does a generative language model produce text?',['It repeatedly predicts the next token from the tokens so far','It looks up exact answers in a table','It sorts words alphabetically','It runs a fixed rule-based decision tree'],0,'LLMs generate one token at a time based on the preceding context.'),
+M('1.2','Which factors should guide the choice of a model from the Foundry catalog?',['Modalities, capability, context window, cost and latency needs','Only the name of the model','The color theme of the portal','The number of users in the subscription'],0,'Pick the model whose capabilities and cost fit the scenario.'),
+M('1.2','In code that calls a deployed chat model, what is passed as the model value?',['The deployment name','The subscription ID','The tenant name','The resource group lock'],0,'Requests refer to your deployment by its name.'),
+Y('1.2','Decide whether each statement about deployments and parameters is correct.',[['A reasoning model may spend extra tokens thinking before it answers.',true],['Raising max tokens always improves answer quality.',false],['Quota limits how many tokens per minute a deployment can use.',true]],'A higher limit only allows longer output; quota governs throughput.'),
+S('1.2','Which TWO settings influence how random a model\'s response is?',['Temperature','Top P','Max tokens','Stop sequence'],[0,1],'Temperature and top P control sampling randomness.'),
 D('1.2','Match each language model setting to its effect.',[['Temperature','Controls randomness of output'],['Max tokens','Limits the length of the response'],['Top P','Samples from tokens within a probability mass'],['Stop sequence','Ends generation when specific text appears']],'These are common generation parameters.'),
 M('1.2','Which technique converts text into numeric vectors that capture semantic meaning?',['Embeddings','Tokenization only','Diarization','OCR'],0,'Embeddings place similar meanings near each other.'),
 M('1.2','You want a model\'s answers to be more consistent and repeatable. Which change helps most?',['Lower the temperature','Raise the temperature','Raise the presence penalty','Increase max tokens'],0,'Lower temperature gives more deterministic output.'),
 Y('1.2','Decide whether each statement about language models is correct.',[['A token is always exactly one whole word.',false],['The context window limits the combined tokens of prompt and response.',true],['Transformer models use attention mechanisms.',true]],'Tokens can be sub-words or punctuation.'),
 M('1.2','You further train a pretrained model with your own labeled examples to change its style and format. What is this called?',['Fine-tuning','Retrieval-augmented generation','Prompt engineering','Clustering'],0,'Fine-tuning adapts model weights with custom examples.'),
 S('1.2','Which TWO items does an application typically need to call a deployed model in Foundry?',['The endpoint URL','Credentials (key or Microsoft Entra ID)','The training dataset','A confusion matrix'],[0,1],'Apps need the endpoint, deployment name and authentication.'),
-D('1.2','Match each machine learning term to its definition.',[['Training','Learning patterns from data to create a model'],['Inference','Using a trained model to make predictions'],['Evaluation','Measuring performance on test data'],['Features','Input variables used to predict a label']],'Core ML vocabulary.'),
+D('1.2','Match each deployment concept to its description.',[['Deployment name','Identifier your code passes as the model'],['Endpoint','URL your application calls'],['Quota','Limit on tokens or requests per minute'],['Provisioned throughput','Reserved capacity for predictable latency']],'Core deployment vocabulary.'),
 M('1.2','Which statement best describes a small language model (SLM)?',['A compact model with lower cost and latency that can run on devices','A model that can only classify images','A model that cannot generate text','A model with no training data'],0,'SLMs trade some capability for efficiency.'),
 /* 1.3 Workloads */
 M('1.3','A company wants to extract vendor names and totals from scanned receipts. Which AI workload is this?',['Information extraction','Anomaly detection','Speech synthesis','Forecasting'],0,'Pulling structured fields from documents is information extraction.'),
-M('1.3','A factory wants to flag unusual readings from machine sensors. Which workload is this?',['Anomaly detection','Image classification','Translation','Knowledge mining'],0,'Anomaly detection finds unusual patterns.'),
+M('1.3','A support team wants call recordings turned into transcripts, sentiment and key topics. Which workload fits?',['Information extraction from audio','Image classification','Face verification','Text to speech'],0,'Extracting structured insights from audio is information extraction (for example with Content Understanding).'),
 M('1.3','Creating new text or images from natural-language prompts is an example of which workload?',['Generative AI','Anomaly detection','Clustering','Regression'],0,'Generative AI creates new content.'),
 M('1.3','Determining whether customer reviews are positive or negative is which type of workload?',['Natural language processing','Computer vision','Speech','Forecasting'],0,'Sentiment analysis is NLP.'),
 M('1.3','Transcribing recorded customer calls into text is which workload?',['Speech','Computer vision','Anomaly detection','Image generation'],0,'Speech to text is a speech workload.'),
-M('1.3','Predicting next month\'s sales from historical monthly data is an example of which workload?',['Forecasting','Object detection','Entity recognition','Image analysis'],0,'Forecasting predicts future values from time-series data.'),
+M('1.3','Condensing a long article into its main points is which text analysis technique?',['Summarization','Entity detection','Sentiment analysis','Keyword extraction'],0,'Summarization shortens content while keeping key information.'),
 D('1.3','Match each scenario to the AI workload.',[['Identify objects in photos','Computer vision'],['Extract key phrases from reviews','Natural language processing'],['Convert spoken audio to text','Speech'],['Draft an email from a prompt','Generative AI']],'Match input type to workload.'),
 Y('1.3','Decide whether each statement about AI workloads is correct.',[['AI agents can use tools to take actions.',true],['Knowledge mining extracts insights from large volumes of unstructured content.',true],['Anomaly detection is a generative AI workload.',false]],'Anomaly detection identifies unusual data; it does not generate content.'),
 M('1.3','A chatbot should answer employees\' questions using the company\'s own policy documents. Which approach fits?',['Generative AI with retrieval-augmented generation','Object detection','Clustering','Speech synthesis'],0,'RAG grounds generative answers in your documents.'),
 M('1.3','A system plans steps, calls tools and completes tasks on its own toward a goal. What is it?',['An AI agent','A regression model','A confusion matrix','A clustering model'],0,'Agents combine a model, instructions and tools.'),
 S('1.3','Which TWO are natural language processing workloads?',['Entity recognition','Translation','Object detection','Image tagging'],[0,1],'Object detection and image tagging are computer vision.'),
-M('1.3','An organization wants to make millions of PDFs and images searchable by extracting and enriching their content. Which workload is this?',['Knowledge mining','Anomaly detection','Speech translation','Regression'],0,'Knowledge mining uses enrichment pipelines such as Azure AI Search skillsets.'),
-D('1.3','Match each Azure AI capability to the task it supports.',[['Azure AI Vision','Generate captions and tags for images'],['Azure AI Speech','Convert speech to text'],['Azure AI Language','Detect sentiment in text'],['Azure AI Document Intelligence','Extract fields from invoices']],'Each service targets a different input type.'),
+M('1.3','Which text analysis technique pulls the main talking points out of a customer review?',['Keyword (key phrase) extraction','Entity detection','Speech synthesis','Image generation'],0,'Keyword extraction surfaces the important terms and phrases.'),
+D('1.3','Match each Azure AI capability to the task it supports.',[['Azure AI Vision','Generate captions and tags for images'],['Azure AI Speech','Convert speech to text'],['Azure AI Language','Detect sentiment in text'],['Azure AI Content Understanding','Extract fields from invoices']],'Each service targets a different input type.'),
 M('1.3','Which computer vision task returns object labels together with their bounding-box locations?',['Object detection','Image classification','OCR','Language detection'],0,'Detection = what and where.'),
 Y('1.3','Decide whether each statement is correct.',[['Translation is a natural language processing workload.',true],['Speech synthesis converts text into spoken audio.',true],['OCR is a forecasting workload.',false]],'OCR reads text from images and is a computer vision capability.'),
 /* 2.1 Generative AI apps and agents */
@@ -611,7 +751,13 @@ Y('2.1','Decide whether each statement is correct.',[['Chat messages use roles s
 M('2.1','What does RAG do before the model generates an answer?',['Retrieves relevant data and adds it to the prompt','Retrains the model on new data','Deletes old conversations','Converts audio to text'],0,'Retrieve, augment, generate.'),
 M('2.1','Which open standard lets agents connect to external tools and data sources in a consistent way?',['Model Context Protocol (MCP)','SMTP','RDP','FTP'],0,'MCP standardizes tool and data connections for agents.'),
 M('2.1','In a RAG solution, what is an embeddings model used for?',['Converting documents and queries into vectors for similarity search','Generating images','Translating speech','Compressing audio'],0,'Embeddings enable vector search.'),
-M('2.1','Which Foundry construct organizes agents, deployments, files and evaluations for one application?',['Project','Subscription tag','Resource lock','Availability set'],0,'Projects group the assets for an app.'),
+C(`agent = project.agents.create_version(
+    agent_name="hr-helper",
+    definition=PromptAgentDefinition(
+        model="my-gpt",
+        instructions="Answer HR policy questions politely.",
+    ),
+)`, M('2.1','What does this code create?',['A versioned prompt agent with a model and instructions','A fine-tuned model','A vector index','An image generation deployment'],0,'create_version registers a prompt agent definition in Foundry Agent Service.')),
 M('2.1','Which Foundry capability helps you measure groundedness, relevance and coherence of model responses?',['Evaluations','Autoscale','Load balancer','Cost alerts'],0,'Evaluations score quality and safety.'),
 S('2.1','Which TWO techniques improve model output without retraining the model?',['Prompt engineering','Retrieval-augmented generation','Fine-tuning','Pretraining from scratch'],[0,1],'Fine-tuning and pretraining modify the model.'),
 Y('2.1','Decide whether each statement about agents is correct.',[['Multiple agents can collaborate in a multi-agent solution.',true],['An agent can only respond with plain text and cannot call tools.',false],['Tracing helps debug an agent\'s model and tool calls.',true]],'Agents use tools; tracing improves observability.'),
@@ -619,21 +765,37 @@ M('2.1','Which Microsoft open-source SDK is designed for building single-agent a
 M('2.1','What is the recommended keyless way for an app to authenticate to a Foundry resource?',['Microsoft Entra ID with a managed identity','A shared password in source code','Anonymous access','A storage account key'],0,'Entra ID avoids storing keys in code.'),
 D('2.1','Match each approach to its description.',[['Prompt engineering','Craft instructions and examples in the prompt'],['RAG','Retrieve external data at query time'],['Fine-tuning','Further train a model on custom examples'],['Agent','Uses a model to plan and invoke tools']],'Four ways to shape generative AI behavior.'),
 M('2.1','In function calling, what does the model return?',['The function name and JSON arguments; the app runs the function','The executed result of the function by itself','A trained model','An encrypted key'],0,'Your application executes the function and sends back the result.'),
-M('2.1','What is the main benefit of streaming responses in a chat app?',['Users see output as it is generated, reducing perceived latency','It retrains the model','It lowers content filtering','It removes the need for tokens'],0,'Streaming sends tokens as they are produced.'),
+C(`from azure.ai.projects import AIProjectClient
+from azure.identity import DefaultAzureCredential
+
+project = AIProjectClient(endpoint=ENDPOINT, credential=DefaultAzureCredential())
+client = project.get_openai_client()
+resp = client.responses.create(model="my-gpt", input="Explain RAG in one sentence.")
+print(resp.output_text)`, M('2.1','What does this Python code do?',['Sends a prompt to a deployed model in a Foundry project and prints the reply','Creates and deploys a new model','Fine-tunes a model on training data','Deletes a Foundry project'],0,'It builds a project client, gets an OpenAI-compatible client and calls the Responses API.')),
 Y('2.1','Decide whether each statement is correct.',[['The Foundry model catalog includes models from multiple providers.',true],['You must deploy a model before calling it from an application.',true],['Content filters apply only to image generation.',false]],'Filters apply to prompts and completions across model types.'),
 /* 2.2 Text and speech */
 M('2.2','Which Azure AI Language feature determines whether text is positive, neutral or negative?',['Sentiment analysis','Key phrase extraction','Language detection','Entity linking'],0,'Sentiment analysis returns labels and confidence scores.'),
 M('2.2','Which feature identifies names of people, places and organizations in text?',['Named entity recognition','Language detection','Summarization','Translation'],0,'NER categorizes entities.'),
 M('2.2','You must find and redact Social Security numbers and email addresses in documents. Which feature should you use?',['PII detection','Key phrase extraction','Sentiment analysis','Speech translation'],0,'PII detection finds and redacts personal data.'),
-M('2.2','In conversational language understanding, what is the goal of a user\'s utterance called?',['Intent','Entity','Token','Label set'],0,'Intents are goals; entities are details.'),
+M('2.2','An app records a question and sends the audio directly to a deployed multimodal model that answers. Which scenario is this?',['Responding to a spoken prompt with a multimodal model','Entity linking','Image captioning','Batch document translation'],0,'Audio-capable multimodal models can take spoken input directly.'),
 S('2.2','Which TWO are capabilities of Azure AI Speech?',['Speech to text','Text to speech','Key phrase extraction','Sentiment analysis'],[0,1],'Key phrases and sentiment are Language features.'),
 M('2.2','What can you use to control pronunciation, pitch and speaking rate in synthesized speech?',['SSML','JSON Schema','OpenAPI','YAML pipelines'],0,'Speech Synthesis Markup Language customizes voice output.'),
 M('2.2','A meeting app must translate a speaker\'s words into another language in real time. Which capability fits?',['Speech translation','Key phrase extraction','Document translation','Entity linking'],0,'Speech translation handles spoken input.'),
 D('2.2','Match each Azure AI Language feature to its purpose.',[['Key phrase extraction','Identify the main talking points'],['Language detection','Determine the language of text'],['Entity linking','Disambiguate entities with reference links'],['Summarization','Condense a long document']],'Four text analysis features.'),
 Y('2.2','Decide whether each statement is correct.',[['Azure AI Translator can translate documents while preserving format.',true],['Speech to text can only be performed as batch transcription.',false],['Custom question answering returns answers from a knowledge base.',true]],'Speech to text supports real-time and batch modes.'),
 M('2.2','You need to transcribe thousands of hours of stored audio asynchronously. Which option fits best?',['Batch transcription','Real-time transcription in a browser','Text to speech','Keyword recognition'],0,'Batch transcription processes large audio sets asynchronously.'),
-M('2.2','Which speech capability labels which speaker spoke at which time?',['Diarization','Summarization','Entity linking','Tokenization'],0,'Diarization separates speakers.'),
-M('2.2','An e-commerce site must translate product descriptions into ten languages. Which service fits?',['Azure AI Translator','Azure AI Vision','Document Intelligence','Azure AI Search'],0,'Translator handles text and document translation.'),
+C(`from azure.ai.textanalytics import TextAnalyticsClient
+from azure.core.credentials import AzureKeyCredential
+
+client = TextAnalyticsClient(endpoint=ENDPOINT, credential=AzureKeyCredential(KEY))
+result = client.analyze_sentiment(["The staff were friendly but the room was dirty."])
+print(result[0].sentiment)`, M('2.2','What does print(result[0].sentiment) show?',['An overall sentiment label such as positive, neutral, negative or mixed','The key phrases in the text','The detected language','The translated text'],0,'analyze_sentiment returns a document-level sentiment label with scores.')),
+C(`import azure.cognitiveservices.speech as speechsdk
+
+speech_config = speechsdk.SpeechConfig(subscription=KEY, region=REGION)
+recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config)
+result = recognizer.recognize_once_async().get()
+print(result.text)`, M('2.2','What does this code do?',['Listens on the default microphone and prints the transcribed text of one utterance','Reads text aloud through the speaker','Translates a document','Detects faces in a video'],0,'SpeechRecognizer performs speech to text; recognize_once handles a single utterance.')),
 M('2.2','Which option supports low-latency, speech-in and speech-out conversations with generative models?',['Voice Live or real-time audio models','Batch transcription','Entity linking','Custom Translator'],0,'Real-time audio models power voice agents.'),
 S('2.2','Which TWO are features of Azure AI Language?',['Summarization','Named entity recognition','Face detection','Optical character recognition'],[0,1],'Face detection and OCR belong to vision services.'),
 Y('2.2','Decide whether each statement is correct.',[['Key phrase extraction returns sentiment scores for each sentence.',false],['Language detection returns a language code and confidence score.',true],['Text to speech can use neural voices.',true]],'Sentiment is a different feature from key phrases.'),
@@ -646,19 +808,25 @@ D('2.3','Match each vision task to its description.',[['Image classification','A
 M('2.3','Which type of Foundry model creates images from a text prompt?',['Image generation model','Embedding model','Speech recognition model','Translation model'],0,'DALL-E and GPT-image family models generate images.'),
 Y('2.3','Decide whether each statement is correct.',[['Face identification and verification can be Limited Access features requiring approval.',true],['Image generation models are subject to content filters.',true],['Object detection returns only one label per image.',false]],'Detection can return many objects.'),
 S('2.3','Which TWO are valid inputs to a multimodal chat model?',['Text','Images','Compiler output','SQL index files'],[0,1],'Multimodal models accept text and images.'),
-M('2.3','Which service extracts transcripts, faces, topics and scenes from video files?',['Azure Video Indexer','Azure AI Translator','Custom question answering','Azure Key Vault'],0,'Video Indexer derives insights from video.'),
+C(`resp = client.responses.create(
+    model="my-gpt",
+    input=[{"role": "user", "content": [
+        {"type": "input_text", "text": "What is in this picture?"},
+        {"type": "input_image", "image_url": "https://example.com/cat.jpg"},
+    ]}],
+)`, M('2.3','What is this request doing?',['Sending text and an image to a multimodal model in one prompt','Generating a new image from text','Running OCR with a custom model','Training an image classifier'],0,'The user message mixes input_text and input_image content parts.')),
 M('2.3','How can you improve the result of an image generation request?',['Use a more detailed prompt describing subject, style and composition','Lower the max tokens','Remove all adjectives','Use a speech model'],0,'Detailed prompts give better control.'),
 /* 2.4 Information extraction */
-M('2.4','You must extract vendor, invoice date and total from invoices. What is the quickest approach?',['Document Intelligence prebuilt invoice model','Train a clustering model','Azure AI Speech','Image generation'],0,'Prebuilt models return named fields for common documents.'),
-M('2.4','Which Document Intelligence model returns text, tables, selection marks and document structure?',['Layout','Language detection','Sentiment','Face'],0,'The layout model captures structure.'),
+M('2.4','You must extract vendor, invoice date and total from invoices. What is the quickest approach?',['A Content Understanding prebuilt invoice analyzer','Train a clustering model','Azure AI Speech','An image generation model'],0,'Domain-specific prebuilt analyzers return named fields for common documents.'),
+C(`POST /analyzers/prebuilt-invoice:analyze`, M('2.4','What does this request do?',['Analyzes content by using the prebuilt invoice analyzer','Creates a custom analyzer','Deletes an analyzer','Translates the invoice'],0,'The analyze action runs the analyzer named before the colon.')),
 M('2.4','What does the confidence score on an extracted field indicate?',['How certain the model is about the extracted value','The price of the call','The file size','The number of pages'],0,'Low confidence can trigger human review.'),
-S('2.4','Which TWO are Document Intelligence prebuilt models?',['Receipt','ID document','Sentiment','Translator'],[0,1],'Sentiment and Translator are different services.'),
+S('2.4','Which TWO are prebuilt Content Understanding analyzers for RAG ingestion?',['prebuilt-documentSearch','prebuilt-videoSearch','prebuilt-trainModel','prebuilt-clusterSearch'],[0,1],'The search analyzers are optimized for RAG ingestion; the other two do not exist.'),
 M('2.4','Which service turns documents, images, audio and video into structured output by using analyzers and field schemas?',['Azure AI Content Understanding','Azure AI Translator','Azure Monitor','Azure Policy'],0,'Content Understanding handles multimodal extraction.'),
-M('2.4','In Azure AI Search, what is a skillset?',['An AI enrichment pipeline applied during indexing','A pricing tier','A type of user role','A network rule'],0,'Skillsets add enrichment such as OCR and entity recognition.'),
-D('2.4','Match each service to its extraction role.',[['Document Intelligence','Extract key-value pairs and tables from forms'],['Content Understanding','Convert multimodal content into structured output'],['Azure AI Search','Index and query enriched content'],['Azure AI Language','Extract entities and PII from text']],'Each service fits a different extraction need.'),
-Y('2.4','Decide whether each statement is correct.',[['Custom extraction models can be trained on your own forms.',true],['Document Intelligence supports only printed English text.',false],['Structured outputs can constrain an LLM response to a JSON schema.',true]],'Document Intelligence supports many languages and handwriting.'),
-M('2.4','What is the purpose of a knowledge store in an Azure AI Search enrichment pipeline?',['Persist enriched data to storage for downstream analysis','Block malicious prompts','Train image models','Translate speech'],0,'Knowledge stores save enriched output as tables, objects or files.'),
-M('2.4','Which Document Intelligence model reads printed and handwritten text without extracting named fields?',['Read','Invoice','Receipt','Business card'],0,'The Read model returns text, lines and words.')
+M('2.4','Which Content Understanding component defines extraction settings, the field schema and model deployments?',['Analyzer','Thread','Run','Connection string'],0,'An analyzer configures how content is processed.'),
+D('2.4','Match each Content Understanding concept to its description.',[['Extract','Reads values as they appear in the document'],['Classify','Assigns content to predefined categories'],['Generate','Creates values such as summaries from the content'],['Confidence score','Estimates reliability of a value from 0 to 1']],'Fields can be extracted, classified or generated; confidence is a 0 to 1 estimate.'),
+Y('2.4','Decide whether each statement is correct.',[['A Content Understanding analyzer can process documents, images, audio and video.',true],['Confidence scores help decide when extracted values need human review.',true],['The Extract field method is supported only for audio and video.',false]],'Extract is supported for documents; audio and video typically use generate or classify.'),
+M('2.4','Which Content Understanding output is best suited for RAG ingestion into a search index?',['Markdown with layout and chunked output from a search analyzer','Raw audio files','A trained model file','An API key'],0,'RAG analyzers return layout-preserving Markdown and embedding-ready chunks.'),
+M('2.4','Which prebuilt analyzer provides basic OCR text extraction without layout analysis?',['prebuilt-read','prebuilt-layout','prebuilt-callCenter','prebuilt-invoice'],0,'prebuilt-read gives foundational text extraction; layout adds structure.')
 ];
 
 /* ---------- exam engine ---------- */
@@ -692,7 +860,7 @@ function draw(){
   const q=P[cur],a=A[cur];
   $('#qn').textContent='Question '+(cur+1)+' of '+N;
   $('#pg').style.width=((cur+1)/N*100)+'%';
-  let h='<p class="qt">'+esc(q.q)+'</p>';
+  let h='<p class="qt">'+esc(q.q)+'</p>'+(q.c?'<pre>'+esc(q.c)+'</pre>':'');
   if(q.t==='mc'){h+='<p class="note">Select one answer.</p>';q.o2.forEach((o,k)=>{h+='<div class="opt'+(a===k?' sel':'')+'" tabindex="0" role="radio" aria-checked="'+(a===k)+'" data-k="'+k+'"><span class="mk">'+(a===k?'●':'')+'</span><span>'+esc(o.t)+'</span></div>'})}
   else if(q.t==='ms'){const need=q.a.length;h+='<p class="note">Select '+need+' answers.</p>';q.o2.forEach((o,k)=>{const on=a.includes(k);h+='<div class="opt ms'+(on?' sel':'')+'" tabindex="0" role="checkbox" aria-checked="'+on+'" data-k="'+k+'"><span class="mk">'+(on?'✓':'')+'</span><span>'+esc(o.t)+'</span></div>'})}
   else if(q.t==='yn'){h+='<p class="note">For each statement, select Yes or No.</p><div class="tw"><table class="yn"><tr><th>Statement</th><th>Yes</th><th>No</th></tr>';q.s2.forEach((s,k)=>{h+='<tr><td>'+esc(s[0])+'</td><td><input type="radio" name="y'+k+'" data-k="'+k+'" data-v="1" aria-label="Yes"'+(a[k]===true?' checked':'')+'></td><td><input type="radio" name="y'+k+'" data-k="'+k+'" data-v="0" aria-label="No"'+(a[k]===false?' checked':'')+'></td></tr>'});h+='</table></div>'}
@@ -771,7 +939,7 @@ function submit(auto){
   window.scrollTo(0,0);
 }
 function review(q,a,s,i){
-  let h='<div class="rv '+(s===1?'c':s===0?'w':'p')+'"><b>Question '+(i+1)+'</b> <span class="meta">(skill area '+q.d+') · '+(s===1?'Correct':s===0?'Incorrect':'Partially correct')+'</span><p>'+esc(q.q)+'</p>';
+  let h='<div class="rv '+(s===1?'c':s===0?'w':'p')+'"><b>Question '+(i+1)+'</b> <span class="meta">(skill area '+q.d+') · '+(s===1?'Correct':s===0?'Incorrect':'Partially correct')+'</span><p>'+esc(q.q)+'</p>'+(q.c?'<pre>'+esc(q.c)+'</pre>':'');
   if(q.t==='mc'||q.t==='ms'){
     q.o2.forEach((o,k)=>{const right=q.t==='mc'?o.i===q.a:q.a.includes(o.i);const mine=q.t==='mc'?a===k:a.includes(k);
       h+='<div class="opt '+(right?'ok':mine?'no':'')+'"><span class="mk">'+(mine?'●':'')+'</span><span>'+esc(o.t)+(right?' — correct answer':'')+(mine&&!right?' — your answer':'')+(mine&&right?' — your answer':'')+'</span></div>'});
